@@ -54,7 +54,7 @@ public class EmployeePage extends javax.swing.JFrame {
         bmale = new javax.swing.JRadioButton();
         bfemale = new javax.swing.JRadioButton();
         HireDate = new com.toedter.calendar.JDateChooser();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        EndDate = new com.toedter.calendar.JDateChooser();
         addbutton = new javax.swing.JButton();
         errorMsg = new javax.swing.JLabel();
         fName = new javax.swing.JTextField();
@@ -249,7 +249,7 @@ public class EmployeePage extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(9, 9, 9)
-                                        .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(EndDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -305,7 +305,7 @@ public class EmployeePage extends javax.swing.JFrame {
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(EndDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -405,6 +405,9 @@ public class EmployeePage extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel)etable.getModel();
         Date chosenHireDate = HireDate.getDate(); 
         String hire = String.format("%1$tm/%1$td/%1$tY", chosenHireDate);
+       
+        Date chosenEndDate = EndDate.getDate(); 
+        String end = String.format("%1$tm/%1$td/%1$tY", chosenEndDate);
         
         if(!FinalProject.verifyAlpha1(fName.getText())){
             errorMsg.setText("Employee must have a valid First name");
@@ -430,14 +433,15 @@ public class EmployeePage extends javax.swing.JFrame {
             errorMsg.setText("Please select either Male or Female");
         }
          else{
-           model.addRow(new Object[] {employeeID.getText(), fName.getText(), lName.getText(), getGender(bgGender), phoneNumber.getText(), email.getText(), hire} );
+           model.addRow(new Object[] {employeeID.getText(), fName.getText(), lName.getText(), getGender(bgGender), phoneNumber.getText(), email.getText(), hire, end} );
            fName.setText("");
            lName.setText("");
            employeeID.setText("");
            phoneNumber.setText("");
            email.setText("");
            ssn.setText("");
-           HireDate.setDate(null); 
+           HireDate.setDate(null);
+           EndDate.setDate(null);
          }
                                           
     }//GEN-LAST:event_addbuttonActionPerformed
@@ -486,6 +490,7 @@ public class EmployeePage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser EndDate;
     private com.toedter.calendar.JDateChooser HireDate;
     private javax.swing.JButton addbutton;
     private javax.swing.JMenu assignmentmenu;
@@ -501,7 +506,6 @@ public class EmployeePage extends javax.swing.JFrame {
     private javax.swing.JTable etable;
     private javax.swing.JTextField fName;
     private javax.swing.JMenu homemenu;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel22;
