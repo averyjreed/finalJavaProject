@@ -48,11 +48,11 @@ public class HomePage extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jTextArea1.setEditable(false);
-        jTextArea1.setBackground(new java.awt.Color(128, 108, 57));
+        jTextArea1.setBackground(new java.awt.Color(186, 159, 87));
         jTextArea1.setColumns(20);
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
-        jTextArea1.setText("Clients - We strive to exceed client expectations \nthrough the quality of our workmanship, our \nattentive project coordination, and our clear \ncommunication throughout every stage of the \nproject.\n\nEmployees - Our firm values its employees and \nencourages them to be their very best. We offer \nnumerous training opportunities and maintain a top\nsafety program to ensure their well-being.\n\nExcellence - We strive to achieve excellence in all \naspects of serving our company and clients.\n\nProfitable Growth - Business growth provides \nadditional opportunities for our firm, allowing us to \ninvest resources back into the community.\n\nSocial Responsibility - We give back to the \ncommunity through philanthropic events, donations,\nand volunteering. We are conscious of our short and \nlong-term impact on the environment.\n\nInnovation - We encourage creative problem solving\nand work to improve on our best practices, which \nleads to better quality and \nefficiency.");
+        jTextArea1.setText("  Clients - We strive to exceed client expectations \n  through the quality of our workmanship, our \n  attentive project coordination, and our clear \n  communication throughout every stage of the \n  project.\n\n  Employees - Our firm values its employees and \n  encourages them to be their very best. We offer \n  numerous training opportunities and maintain a         top\n  safety program to ensure their well-being .\n\n  Excellence - We strive to achieve excellence in all \n  aspects of serving our company and clients.\n\n  Profitable Growth - Business growth provides \n  additional opportunities for our firm, allowing us to   invest resources back into the community.\n\n  Social Responsibility - We give back to the \n  community through philanthropic  events,donations,\nand volunteering. We are conscious of our short and \nlong-term impact on the environment.\n\nInnovation - We encourage creative problem solving\nand work to improve on our best practices, which \nleads to better quality and \nefficiency.");
         jTextArea1.setWrapStyleWord(true);
         jScrollPane1.setViewportView(jTextArea1);
 
