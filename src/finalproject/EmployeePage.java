@@ -55,6 +55,8 @@ public class EmployeePage extends javax.swing.JFrame {
         bfemale = new javax.swing.JRadioButton();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        addbutton = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         homemenu = new javax.swing.JMenu();
         employeemenu = new javax.swing.JMenu();
@@ -114,6 +116,16 @@ public class EmployeePage extends javax.swing.JFrame {
                 bfemaleActionPerformed(evt);
             }
         });
+
+        addbutton.setText("Add");
+        addbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addbuttonActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel9.setSize(new java.awt.Dimension(100, 100));
 
         homemenu.setText("Home");
         homemenu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -194,10 +206,6 @@ public class EmployeePage extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addComponent(jLabel5)
                             .addComponent(jLabel8)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(bmale)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(bfemale))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -206,9 +214,17 @@ public class EmployeePage extends javax.swing.JFrame {
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGap(18, 18, 18)
-                                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(bmale)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(addbutton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(bfemale, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 607, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 607, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -216,7 +232,7 @@ public class EmployeePage extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -244,8 +260,12 @@ public class EmployeePage extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(bmale)
-                            .addComponent(bfemale))))
-                .addContainerGap(37, Short.MAX_VALUE))
+                            .addComponent(bfemale))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(addbutton)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
@@ -335,6 +355,70 @@ public class EmployeePage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_bfemaleActionPerformed
 
+    private void addbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addbuttonActionPerformed
+        errorMsg.setText("");
+        
+        DefaultTableModel model = (DefaultTableModel)employeetbl.getModel();
+        
+        if(!verifyAlpha1(fName)){
+            errorMsg.setText("Employee must have a valid First name");
+        }
+        else if(!verifyAlpha2(lName)){
+            errorMsg.setText("Employee must hava a valid Last name");
+        }
+        else if (!verifySSN(ssn)){
+            errorMsg.setText("Employee must have a valid Social Security Number");
+        }
+        else if(!validatePhoneNumber(phoneNumber)) {
+            errorMsg.setText("Employee must have a valid phone number");
+        }
+         else if(!validateEmail(email)){
+            errorMsg.setText("Employee must have a valid email address");
+         }
+        else if(!rbMale.isSelected() && !rbFemale.isSelected()){
+            errorMsg.setText("Please select either Male or Female");
+        }
+         else{
+           model.addRow(new Object[] { position.getSelectedItem(), fName.getText(), lName.getText(), getGender(bgGender), phoneNumber.getText(), email.getText()} );
+           fName.setText("");
+           lName.setText("");
+           phoneNumber.setText("");
+           email.setText("");
+         }
+                                          
+    }//GEN-LAST:event_addbuttonActionPerformed
+
+    public static boolean verifyAlpha1(JTextField fName){
+        return fName.getText().matches("[A-Z][a-zA-Z]*");
+    } 
+    
+    public static boolean verifyAlpha2(JTextField lName){
+        return lName.getText().matches("[A-Z][a-zA-Z]*");
+    }
+ 
+     public static boolean verifySSN (JTextField ssn){
+    if (ssn.getText().matches("\\d{3}-\\d{2}-\\d{4}"))
+        return ssn.getText().matches("\\d{3}-\\d{2}-\\d{4}");
+    else if (ssn.getText().matches("\\d{3} \\d{2} \\d{4}"))
+        return ssn.getText().matches("\\d{3} \\d{2} \\d{4}");
+    else
+        return ssn.getText().matches("\\d{9}");
+     }
+    
+    public static boolean validatePhoneNumber (JTextField phoneNumber){
+    if (phoneNumber.getText().matches("[1-9]\\d{2}-[1-9]\\d{2}-\\d{4}"))
+        return phoneNumber.getText().matches("[1-9]\\d{2}-[1-9]\\d{2}-\\d{4}");
+    else if (phoneNumber.getText().matches("[1-9]\\d{2}[1-9]\\d{6}"))
+        return phoneNumber.getText().matches("[1-9]\\d{2}[1-9]\\d{6}");
+    else if (phoneNumber.getText().matches("[1-9]\\d{2}.[1-9]\\d{2}.\\d{4}"))
+        return phoneNumber.getText().matches("[1-9]\\d{2}.[1-9]\\d{2}.\\d{4}");
+    else
+        return phoneNumber.getText().matches("\\([1-9]\\d{2}\\)-[1-9]\\d{2}-\\d{4}");
+    }
+    
+    public static boolean validateEmail(JTextField email){
+           return email.getText().matches("\\S*[@]\\S*.[a-zA-Z][a-zA-Z][a-zA-Z]");
+    }
     /**
      * @param args the command line arguments
      */
@@ -371,6 +455,7 @@ public class EmployeePage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addbutton;
     private javax.swing.JMenu assignmentmenu;
     private javax.swing.JRadioButton bfemale;
     private javax.swing.ButtonGroup bgGender;
@@ -392,6 +477,7 @@ public class EmployeePage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenu payrollmenu;
