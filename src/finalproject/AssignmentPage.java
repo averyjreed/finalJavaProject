@@ -49,7 +49,8 @@ public class AssignmentPage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("American Typewriter", 0, 13)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Phosphate", 0, 16)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(102, 102, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Reed-Bentley Construction Assignments");
         jLabel1.setPreferredSize(new java.awt.Dimension(600, 600));
@@ -121,13 +122,10 @@ public class AssignmentPage extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(195, 195, 195)
-                        .addComponent(jLabel2)))
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
                 .addContainerGap(585, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
