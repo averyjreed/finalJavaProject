@@ -263,9 +263,11 @@ public class EmployeePage extends javax.swing.JFrame {
                         .addGap(14, 14, 14)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(errorMsg, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(errorMsg, javax.swing.GroupLayout.DEFAULT_SIZE, 578, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -329,22 +331,6 @@ public class EmployeePage extends javax.swing.JFrame {
         hp.setVisible(true);
         dispose();
     }//GEN-LAST:event_homemenuMouseClicked
-
-    private boolean verifyDates(Date hr, Date lv) {
-        if (hr.compareTo(lv) < 0) 
-            return true; 
-        return false;}
-    
-    /* String hireDateString = eptr.getHiredate();
-    DateFormat df = new SimpleDateFormat("MM/dd/yyyy"); 
-    Date hireDate; 
-    
-    try{ 
-        hireDate = (Date)df.parse(hireDateString);} 
-    
-    catch(Exception e) {
-        e.printStackTrace(); 
-        return; } */ // converting date back to object
     
     private String getGender(ButtonGroup buttonGroup) {
         for (Enumeration < AbstractButton > buttons = buttonGroup.getElements(); buttons.hasMoreElements();) {
@@ -356,6 +342,19 @@ public class EmployeePage extends javax.swing.JFrame {
         }
         return ""; //returns an empty string, if no radio button is selected
     }
+    
+        
+    /*String hireDateString = eptr.getHiredate();
+    DateFormat df = new SimpleDateFormat("MM/dd/yyyy"); 
+    Date hireDate; 
+    
+    try{ 
+        hireDate = (Date)df.parse(hireDateString);} 
+    
+    catch(Exception e) {
+        e.printStackTrace(); 
+        return; }*/
+        
     
     private void employeemenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_employeemenuMouseClicked
         
@@ -420,11 +419,12 @@ public class EmployeePage extends javax.swing.JFrame {
             errorMsg.setText("Employee must have a valid Social Security Number");
         }
         else if(!FinalProject.verifyempID(employeeID.getText())) {
-            errorMsg.setText("Employee must have a valid employee number");}
+            errorMsg.setText("Employee must have a valid employee number");
+        }
         else if(!FinalProject.validatePhoneNumber(phoneNumber.getText())) {
             errorMsg.setText("Employee must have a valid phone number");
         }
-         else if(!FinalProject.validateEmail(email.getText())){
+        else if(!FinalProject.validateEmail(email.getText())){
             errorMsg.setText("Employee must have a valid email address");
         }
         else if(hire.equals("null/null/null")){
@@ -433,7 +433,7 @@ public class EmployeePage extends javax.swing.JFrame {
         else if(!bmale.isSelected() && !bfemale.isSelected()){
             errorMsg.setText("Please select either Male or Female");
         }
-         else{
+        else{
            model.addRow(new Object[] {employeeID.getText(), fName.getText(), lName.getText(), getGender(bgGender), phoneNumber.getText(), email.getText(), hire, end} );
            fName.setText("");
            lName.setText("");
