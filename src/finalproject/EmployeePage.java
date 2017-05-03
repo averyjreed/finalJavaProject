@@ -53,7 +53,7 @@ public class EmployeePage extends javax.swing.JFrame {
         etable = new javax.swing.JTable();
         bmale = new javax.swing.JRadioButton();
         bfemale = new javax.swing.JRadioButton();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        HireDate = new com.toedter.calendar.JDateChooser();
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
         addbutton = new javax.swing.JButton();
         errorMsg = new javax.swing.JLabel();
@@ -260,7 +260,7 @@ public class EmployeePage extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(HireDate, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(errorMsg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -301,7 +301,7 @@ public class EmployeePage extends javax.swing.JFrame {
                             .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(HireDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -333,14 +333,6 @@ public class EmployeePage extends javax.swing.JFrame {
         if (hr.compareTo(lv) < 0) 
             return true; 
         return false;}
-    
-      /* Date chosenHireDate = HireDate.getDate(); 
-    String hire = String.format("%1$tm/%1$td/%1$tY", chosenHireDate); 
-        if (hire.equals("null/null/null")) { 
-            lbMessage.setText("No Hire Date was selected."); 
-            return; }
-    HireDate.setDate(null);  // clears JCalendar field*/ // add to validations!!
-    
     
     /* String hireDateString = eptr.getHiredate();
     DateFormat df = new SimpleDateFormat("MM/dd/yyyy"); 
@@ -411,6 +403,8 @@ public class EmployeePage extends javax.swing.JFrame {
         errorMsg.setText("");
         
         DefaultTableModel model = (DefaultTableModel)etable.getModel();
+        Date chosenHireDate = HireDate.getDate(); 
+        String hire = String.format("%1$tm/%1$td/%1$tY", chosenHireDate);
         
         if(!FinalProject.verifyAlpha1(fName.getText())){
             errorMsg.setText("Employee must have a valid First name");
@@ -421,22 +415,29 @@ public class EmployeePage extends javax.swing.JFrame {
         else if (!FinalProject.verifySSN(ssn.getText())){
             errorMsg.setText("Employee must have a valid Social Security Number");
         }
+        else if(!FinalProject.verifyempID(employeeID.getText())) {
+            errorMsg.setText("Employee must have a valid employee number");}
         else if(!FinalProject.validatePhoneNumber(phoneNumber.getText())) {
             errorMsg.setText("Employee must have a valid phone number");
         }
          else if(!FinalProject.validateEmail(email.getText())){
             errorMsg.setText("Employee must have a valid email address");
-         }
+        }
+        else if(hire.equals("null/null/null")){
+            errorMsg.setText("No Hire Date was selected.");
+        }
         else if(!bmale.isSelected() && !bfemale.isSelected()){
             errorMsg.setText("Please select either Male or Female");
         }
          else{
-           model.addRow(new Object[] {fName.getText(), lName.getText(), getGender(bgGender), phoneNumber.getText(), email.getText()} );
+           model.addRow(new Object[] {employeeID.getText(), fName.getText(), lName.getText(), getGender(bgGender), phoneNumber.getText(), email.getText(), hire} );
            fName.setText("");
            lName.setText("");
+           employeeID.setText("");
            phoneNumber.setText("");
            email.setText("");
            ssn.setText("");
+           HireDate.setDate(null); 
          }
                                           
     }//GEN-LAST:event_addbuttonActionPerformed
@@ -485,6 +486,7 @@ public class EmployeePage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser HireDate;
     private javax.swing.JButton addbutton;
     private javax.swing.JMenu assignmentmenu;
     private javax.swing.JRadioButton bfemale;
@@ -499,7 +501,6 @@ public class EmployeePage extends javax.swing.JFrame {
     private javax.swing.JTable etable;
     private javax.swing.JTextField fName;
     private javax.swing.JMenu homemenu;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -47,6 +47,6 @@ public class FinalProject {
     }
     
     public static boolean validateEmail(String email){
-           return email.matches("\\S*[@]\\S*.[a-zA-Z][a-zA-Z][a-zA-Z]");
+           return email.matches("\\S*[@]\\S*[.][a-zA-Z][a-zA-Z][a-zA-Z]");
     }
 }
