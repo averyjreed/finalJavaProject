@@ -46,7 +46,8 @@ public class DepartmentPage extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setSize(new java.awt.Dimension(900, 600));
 
-        jLabel1.setFont(new java.awt.Font("American Typewriter", 0, 13)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Phosphate", 0, 16)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(102, 102, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Reed-Bentley Construction Departments");
         jLabel1.setPreferredSize(new java.awt.Dimension(600, 600));
@@ -116,9 +117,9 @@ public class DepartmentPage extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(629, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(577, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
