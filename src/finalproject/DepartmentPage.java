@@ -44,7 +44,6 @@ public class DepartmentPage extends javax.swing.JFrame {
         close = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(900, 600));
         setSize(new java.awt.Dimension(900, 600));
 
         jLabel1.setFont(new java.awt.Font("American Typewriter", 0, 13)); // NOI18N
