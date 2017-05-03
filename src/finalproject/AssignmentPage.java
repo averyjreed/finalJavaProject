@@ -36,6 +36,7 @@ public class AssignmentPage extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         homemenu = new javax.swing.JMenu();
         employeemenu = new javax.swing.JMenu();
@@ -52,6 +53,8 @@ public class AssignmentPage extends javax.swing.JFrame {
         jLabel1.setPreferredSize(new java.awt.Dimension(600, 600));
 
         jLabel2.setText("better work");
+
+        jLabel3.setText("Second try");
 
         homemenu.setText("Home");
         homemenu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -124,8 +127,11 @@ public class AssignmentPage extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(407, 407, 407)
-                        .addComponent(jLabel2)))
-                .addContainerGap(421, Short.MAX_VALUE))
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(417, 417, 417)
+                        .addComponent(jLabel3)))
+                .addContainerGap(417, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,7 +140,9 @@ public class AssignmentPage extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(67, 67, 67)
                 .addComponent(jLabel2)
-                .addContainerGap(453, Short.MAX_VALUE))
+                .addGap(27, 27, 27)
+                .addComponent(jLabel3)
+                .addContainerGap(410, Short.MAX_VALUE))
         );
 
         pack();
@@ -224,6 +232,7 @@ public class AssignmentPage extends javax.swing.JFrame {
     private javax.swing.JMenu homemenu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu payrollmenu;
     // End of variables declaration//GEN-END:variables
