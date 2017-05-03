@@ -47,11 +47,12 @@ public class HomePage extends javax.swing.JFrame {
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-        jTextArea1.setText("rfrfr");
+        jTextArea1.setText("Clients - We strive to exceed client expectations \nthrough the quality of our workmanship, our \nattentive project coordination, and our clear \ncommunication throughout every stage of the \nproject.\n\nEmployees - Our firm values its employees and \nencourages them to be their very best. We offer \nnumerous training opportunities and maintain a top\nsafety program to ensure their well-being.\n\nExcellence - We strive to achieve excellence in all \naspects of serving our company and clients.\n\nProfitable Growth - Business growth provides \nadditional opportunities for our firm, allowing us to \ninvest resources back into the community.\n\nSocial Responsibility - We give back to the \ncommunity through philanthropic events, donations,\nand volunteering. We are conscious of our short and \nlong-term impact on the environment.\n\nInnovation - We encourage creative problem solving\nand work to improve on our best practices, which \nleads to better quality and \nefficiency.");
         jTextArea1.setWrapStyleWord(true);
         jScrollPane1.setViewportView(jTextArea1);
 
-        jLabel1.setFont(new java.awt.Font("American Typewriter", 0, 13)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Phosphate", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(102, 102, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Reed-Bentley Construction");
         jLabel1.setPreferredSize(new java.awt.Dimension(600, 600));
@@ -121,10 +122,12 @@ public class HomePage extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(704, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(173, 173, 173)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(82, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
