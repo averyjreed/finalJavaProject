@@ -14,6 +14,9 @@ import java.text.SimpleDateFormat;
 import java.awt.Color;
 import javax.swing.AbstractButton;
 import javax.swing.JTable;
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 
 
@@ -47,7 +50,7 @@ public class EmployeePage extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        etable = new javax.swing.JTable();
         bmale = new javax.swing.JRadioButton();
         bfemale = new javax.swing.JRadioButton();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
@@ -86,18 +89,15 @@ public class EmployeePage extends javax.swing.JFrame {
 
         jLabel8.setText("Gender:");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        etable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "EmployeeID", "First Name", "Last Name", "Gender", "Phone", "Email", "Hire Date", "End Date"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(etable);
 
         bgGender.add(bmale);
         bmale.setText("Male");
@@ -208,7 +208,7 @@ public class EmployeePage extends javax.swing.JFrame {
                                     .addGap(18, 18, 18)
                                     .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 607, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -258,6 +258,30 @@ public class EmployeePage extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_homemenuMouseClicked
 
+    private boolean verifyDates(Date hr, Date lv) {
+        if (hr.compareTo(lv) < 0) 
+            return true; 
+        return false;}
+    
+      /* Date chosenHireDate = HireDate.getDate(); 
+    String hire = String.format("%1$tm/%1$td/%1$tY", chosenHireDate); 
+        if (hire.equals("null/null/null")) { 
+            lbMessage.setText("No Hire Date was selected."); 
+            return; }
+    HireDate.setDate(null);  // clears JCalendar field*/ // add to validations!!
+    
+    
+    /* String hireDateString = eptr.getHiredate();
+    DateFormat df = new SimpleDateFormat("MM/dd/yyyy"); 
+    Date hireDate; 
+    
+    try{ 
+        hireDate = (Date)df.parse(hireDateString);} 
+    
+    catch(Exception e) {
+        e.printStackTrace(); 
+        return; } */ // converting date back to object
+    
     private String getGender(ButtonGroup buttonGroup) {
         for (Enumeration < AbstractButton > buttons = buttonGroup.getElements(); buttons.hasMoreElements();) {
             AbstractButton button = buttons.nextElement();
@@ -354,6 +378,7 @@ public class EmployeePage extends javax.swing.JFrame {
     private javax.swing.JMenu close;
     private javax.swing.JMenu departmentmenu;
     private javax.swing.JMenu employeemenu;
+    private javax.swing.JTable etable;
     private javax.swing.JMenu homemenu;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
@@ -369,7 +394,6 @@ public class EmployeePage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JMenu payrollmenu;
     // End of variables declaration//GEN-END:variables
 }

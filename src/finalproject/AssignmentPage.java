@@ -14,6 +14,9 @@ import java.text.SimpleDateFormat;
 import java.awt.Color;
 import javax.swing.AbstractButton;
 import javax.swing.JTable;
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 
 public class AssignmentPage extends javax.swing.JFrame {
@@ -147,6 +150,29 @@ public class AssignmentPage extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_homemenuMouseClicked
 
+    private boolean verifyDates(Date hr, Date lv) {
+        if (hr.compareTo(lv) < 0) 
+            return true; 
+        return false;}
+    
+    /*Date chosenHireDate = HireDate.getDate(); 
+    String hire = String.format("%1$tm/%1$td/%1$tY", chosenHireDate); 
+        if (hire.equals("null/null/null")) { 
+            lbMessage.setText("No Hire Date was selected."); 
+            return; }
+    HireDate.setDate(null);  // clears JCalendar field*/ // add to validations!!
+    
+      /* String hireDateString = eptr.getHiredate();
+    DateFormat df = new SimpleDateFormat("MM/dd/yyyy"); 
+    Date hireDate; 
+    
+    try{ 
+        hireDate = (Date)df.parse(hireDateString);} 
+    
+    catch(Exception e) {
+        e.printStackTrace(); 
+        return; } */ // converting date back to object
+    
     private void employeemenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_employeemenuMouseClicked
         EmployeePage ep = new EmployeePage();
         ep.setVisible(true);
