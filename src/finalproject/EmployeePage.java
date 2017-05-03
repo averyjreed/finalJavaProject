@@ -242,30 +242,29 @@ public class EmployeePage extends javax.swing.JFrame {
                                     .addComponent(email)
                                     .addComponent(phoneNumber)))
                             .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(bmale)
-                                                    .addGap(18, 18, 18)
-                                                    .addComponent(bfemale)))))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(69, 69, 69)
-                                        .addComponent(addbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel8))
-                                .addGap(0, 32, Short.MAX_VALUE)))))
+                                        .addGap(9, 9, 9)
+                                        .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(addbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(bmale))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(bfemale))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(errorMsg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 604, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -313,7 +312,7 @@ public class EmployeePage extends javax.swing.JFrame {
                             .addComponent(jLabel8)
                             .addComponent(bfemale)
                             .addComponent(bmale))
-                        .addGap(43, 43, 43)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(addbutton)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(errorMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -408,23 +407,24 @@ public class EmployeePage extends javax.swing.JFrame {
     }//GEN-LAST:event_bfemaleActionPerformed
 
     private void addbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addbuttonActionPerformed
+        
         errorMsg.setText("");
         
         DefaultTableModel model = (DefaultTableModel)etable.getModel();
         
-        if(!FinalProject.verifyAlpha1(fName)){
+        if(!FinalProject.verifyAlpha1(fName.getText())){
             errorMsg.setText("Employee must have a valid First name");
         }
-        else if(!FinalProject.verifyAlpha2(lName)){
+        else if(!FinalProject.verifyAlpha2(lName.getText())){
             errorMsg.setText("Employee must hava a valid Last name");
         }
-        else if (!FinalProject.verifySSN(ssn)){
+        else if (!FinalProject.verifySSN(ssn.getText())){
             errorMsg.setText("Employee must have a valid Social Security Number");
         }
-        else if(!FinalProject.validatePhoneNumber(phoneNumber)) {
+        else if(!FinalProject.validatePhoneNumber(phoneNumber.getText())) {
             errorMsg.setText("Employee must have a valid phone number");
         }
-         else if(!FinalProject.validateEmail(email)){
+         else if(!FinalProject.validateEmail(email.getText())){
             errorMsg.setText("Employee must have a valid email address");
          }
         else if(!bmale.isSelected() && !bfemale.isSelected()){
@@ -436,6 +436,7 @@ public class EmployeePage extends javax.swing.JFrame {
            lName.setText("");
            phoneNumber.setText("");
            email.setText("");
+           ssn.setText("");
          }
                                           
     }//GEN-LAST:event_addbuttonActionPerformed
