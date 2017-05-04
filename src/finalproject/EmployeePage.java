@@ -60,6 +60,9 @@ public class EmployeePage extends javax.swing.JFrame {
         employeeID = new javax.swing.JTextField();
         phoneNumber = new javax.swing.JTextField();
         email = new javax.swing.JTextField();
+        updatebutton = new javax.swing.JButton();
+        currentbutton = new javax.swing.JButton();
+        pastbutton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         homemenu = new javax.swing.JMenu();
         employeemenu = new javax.swing.JMenu();
@@ -142,6 +145,17 @@ public class EmployeePage extends javax.swing.JFrame {
                 lNameActionPerformed(evt);
             }
         });
+
+        updatebutton.setText("Update");
+        updatebutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updatebuttonActionPerformed(evt);
+            }
+        });
+
+        currentbutton.setText("Current");
+
+        pastbutton.setText("Past");
 
         homemenu.setText("Home");
         homemenu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -247,11 +261,17 @@ public class EmployeePage extends javax.swing.JFrame {
                                         .addComponent(EndDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(addbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(bmale))
-                                        .addGap(18, 18, 18)
-                                        .addComponent(bfemale))))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                    .addComponent(addbutton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                                                    .addComponent(bmale)
+                                                    .addComponent(updatebutton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                .addGap(18, 18, 18)
+                                                .addComponent(bfemale))
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(pastbutton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(currentbutton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -272,7 +292,10 @@ public class EmployeePage extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(errorMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -313,9 +336,13 @@ public class EmployeePage extends javax.swing.JFrame {
                             .addComponent(bfemale)
                             .addComponent(bmale))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(addbutton)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(errorMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(addbutton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(updatebutton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(currentbutton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pastbutton)))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
@@ -380,7 +407,7 @@ public class EmployeePage extends javax.swing.JFrame {
     }//GEN-LAST:event_payrollmenuMouseClicked
 
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
-        FinalProject.writeFiles();
+        //FinalProject.writeFiles();
         dispose();
     }//GEN-LAST:event_closeMouseClicked
 
@@ -428,9 +455,11 @@ public class EmployeePage extends javax.swing.JFrame {
         else if(hire.equals("null/null/null")){
             errorMsg.setText("No Hire Date was selected.");
         }
+        // verify dates check goes here
         else if(!bmale.isSelected() && !bfemale.isSelected()){
             errorMsg.setText("Please select either Male or Female");
         }
+        // add employee to linked list?
         else{
            model.addRow(new Object[] {employeeID.getText(), fName.getText(), lName.getText(), getGender(bgGender), phoneNumber.getText(), email.getText(), hire, end} );
            fName.setText("");
@@ -452,6 +481,23 @@ public class EmployeePage extends javax.swing.JFrame {
     private void lNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_lNameActionPerformed
+
+    private void updatebuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatebuttonActionPerformed
+        errorMsg.setText("");
+        
+        DefaultTableModel model = (DefaultTableModel)etable.getModel();
+        Date chosenEndDate = EndDate.getDate(); 
+        String end = String.format("%1$tm/%1$td/%1$tY", chosenEndDate);
+        
+        if(etable.getSelectedRow() == -1){
+            if(etable.getRowCount() == 0)
+                errorMsg.setText("Table is empty");
+            else
+                errorMsg.setText("No Employee was selected");
+        }    
+        else
+            model.setValueAt(end, etable.getSelectedRow(), 7);
+    }//GEN-LAST:event_updatebuttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -497,6 +543,7 @@ public class EmployeePage extends javax.swing.JFrame {
     private javax.swing.ButtonGroup bgGender;
     private javax.swing.JRadioButton bmale;
     private javax.swing.JMenu close;
+    private javax.swing.JButton currentbutton;
     private javax.swing.JMenu departmentmenu;
     private javax.swing.JTextField email;
     private javax.swing.JTextField employeeID;
@@ -518,8 +565,10 @@ public class EmployeePage extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField lName;
+    private javax.swing.JButton pastbutton;
     private javax.swing.JMenu payrollmenu;
     private javax.swing.JTextField phoneNumber;
     private javax.swing.JTextField ssn;
+    private javax.swing.JButton updatebutton;
     // End of variables declaration//GEN-END:variables
 }
