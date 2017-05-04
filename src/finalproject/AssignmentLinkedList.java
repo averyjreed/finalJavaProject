@@ -7,26 +7,25 @@ package finalproject;
 
 /**
  *
- * @author averyreed
+ * @author mattbentley
  */
-public class EmployeeLinkedList {
+public class AssignmentLinkedList {
     
-  // initialize class variable
-    private EmployeeNode head;
+    private AssignmentNode head;
     
 	// empty constructor method
-    public EmployeeLinkedList() 
+    public AssignmentLinkedList() 
 	{  
     }
 
 	// get method to linked list "head" node
-    public EmployeeNode getHead() 
+    public AssignmentNode getHead() 
 	{
             return head;
     }
 
 	// set method to linked list "head" node
-    public void setHead(EmployeeNode head) 
+    public void setHead(AssignmentNode head) 
 	{
             this.head= head;
     }
@@ -38,8 +37,9 @@ public class EmployeeLinkedList {
                 return true;}
             else{
                 return false;}
+
     }
-    
+    /* USE INFO form Assignment Instead
 	// method to add data to the linked list
          public void add(String fName, String lName, String employeeID, String gender, String ssn,
                         String phoneNumber, String email, String HireDate, String EndDate){ 
@@ -54,7 +54,7 @@ public class EmployeeLinkedList {
               current.setNext(new EmployeeNode(fName, lName, employeeID, gender, ssn, phoneNumber, email, HireDate, EndDate) );
             }
         }
-         
+         */
         public Integer size(){
             
           Integer size = 0;

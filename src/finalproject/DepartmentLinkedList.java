@@ -7,26 +7,24 @@ package finalproject;
 
 /**
  *
- * @author averyreed
+ * @author mattbentley
  */
-public class EmployeeLinkedList {
-    
-  // initialize class variable
-    private EmployeeNode head;
+public class DepartmentLinkedList {
+    private DepartmentNode head;
     
 	// empty constructor method
-    public EmployeeLinkedList() 
+    public DepartmentLinkedList() 
 	{  
     }
 
 	// get method to linked list "head" node
-    public EmployeeNode getHead() 
+    public DepartmentNode getHead() 
 	{
             return head;
     }
 
 	// set method to linked list "head" node
-    public void setHead(EmployeeNode head) 
+    public void setHead(DepartmentNode head) 
 	{
             this.head= head;
     }
@@ -38,8 +36,9 @@ public class EmployeeLinkedList {
                 return true;}
             else{
                 return false;}
+
     }
-    
+    /* USE INFO form Department Instead
 	// method to add data to the linked list
          public void add(String fName, String lName, String employeeID, String gender, String ssn,
                         String phoneNumber, String email, String HireDate, String EndDate){ 
@@ -54,11 +53,11 @@ public class EmployeeLinkedList {
               current.setNext(new EmployeeNode(fName, lName, employeeID, gender, ssn, phoneNumber, email, HireDate, EndDate) );
             }
         }
-         
+         */
         public Integer size(){
             
           Integer size = 0;
-          EmployeeNode current = head;
+          DepartmentNode current = head;
             
             while(current != null){
                 size++;
