@@ -7,9 +7,15 @@ import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.awt.Color;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import javax.swing.AbstractButton;
 import javax.swing.JTable;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class EmployeePage extends javax.swing.JFrame {
 
@@ -409,12 +415,13 @@ public class EmployeePage extends javax.swing.JFrame {
     }//GEN-LAST:event_payrollmenuMouseClicked
 
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
-        //FinalProject.writeFiles();
+        FinalProject.closeEmployeeFile();
         dispose();
     }//GEN-LAST:event_closeMouseClicked
 
     private void closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeActionPerformed
 
+        
     }//GEN-LAST:event_closeActionPerformed
 
     private void bmaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bmaleActionPerformed
@@ -473,7 +480,13 @@ public class EmployeePage extends javax.swing.JFrame {
            ssn.setText("");
            HireDate.setDate(null);
            EndDate.setDate(null);
-         }
+        
+           
+         FinalProject.emplist.add(employeeID.getText(),ssn.getText(), fName.getText(), lName.getText(),
+                                getGender(bgGender), phoneNumber.getText(), email.getText(), hire, end);
+         
+        }
+        
                                           
     }//GEN-LAST:event_addbuttonActionPerformed
 

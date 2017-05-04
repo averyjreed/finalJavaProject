@@ -24,8 +24,10 @@ public class FinalProject {
          
         openEmployeeFile();
         emplist = new EmployeeLinkedList();
-        
+
         new HomePage().setVisible(true); 
+        
+        addEmployee();
         
         closeEmployeeFile();
     }
