@@ -23,14 +23,12 @@ public class EmployeeLinkedList {
     public EmployeeNode getHead() 
 	{
             return head;
-        // *** PROVIDE CODE HERE ***
     }
 
 	// set method to linked list "head" node
     public void setHead(EmployeeNode head) 
 	{
             this.head= head;
-        // *** PROVIDE CODE HERE ***
     }
     
 	// method to check if the linked list is empty
@@ -41,19 +39,35 @@ public class EmployeeLinkedList {
             else{
                 return false;}
 		 // *** PROVIDE CODE HERE ***
-        }
+    }
+    
 	// method to add data to the linked list
          public void add(String fName, String lName, String employeeID, String gender, String ssn,
                         String phoneNumber, String email, String HireDate, String EndDate){ 
             if(isEmpty()){
                 head = new EmployeeNode(fName, lName, employeeID, gender, ssn, phoneNumber, email, HireDate, EndDate);
-            } else{
+            }
+            else{
               EmployeeNode current = head;
               while(current.getNext() !=null){
                   current = current.getNext();
               }
               current.setNext(new EmployeeNode(fName, lName, employeeID, gender, ssn, phoneNumber, email, HireDate, EndDate) );
             }
+        }
+         
+        public Integer size(){
+            
+          Integer size = 0;
+          EmployeeNode current = head;
+            
+            while(current != null){
+                size++;
+                
+                current = current.getNext();
+            }
+            
+          return size;
         }
     
 }

@@ -31,12 +31,12 @@ public class EmployeeNode {
         this.lName = lName;
         this.ssn = ssn;
         this.gender = gender;
-        this.employeeID= employeeID;
-        this.phoneNumber= phoneNumber;
+        this.employeeID = employeeID;
+        this.phoneNumber = phoneNumber;
         this.email = email;
         this.HireDate = HireDate;
         this.EndDate = EndDate;        
-        this.next = null;
+        this.next = next;
     }
 
 	
@@ -44,7 +44,6 @@ public class EmployeeNode {
     public String getFname() 
 	{
             return fName;
-        // *** PROVIDE CODE HERE ***
     }
 
 	// set method for fName
@@ -79,10 +78,10 @@ public class EmployeeNode {
 	// set method for gender
 	public void setGender(String gender)
 	{
-            this.gender= gender;
+            this.gender = gender;
 	}
         
-        public String getEmployeeID (String employeeID)
+        public String getEmployeeID ()
         {
             return employeeID;
         }
@@ -136,15 +135,13 @@ public class EmployeeNode {
 	public EmployeeNode getNext() 
 	{
             return next;
-        // *** PROVIDE CODE HERE ***
     }
 	
 	// set method for the next node
     public void setNext(EmployeeNode next) 
 	{
             this.next = next;
-        // *** PROVIDE CODE HERE ***
-        
+    
     } 
 	
 }	// end EmployeeNode class
