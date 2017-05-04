@@ -27,9 +27,6 @@ public class FinalProject {
 
         new HomePage().setVisible(true); 
         
-        addEmployee();
-        
-        closeEmployeeFile();
     }
     
     public static void openEmployeeFile(){
@@ -52,7 +49,7 @@ public class FinalProject {
         
         for(int i = 0; i < emplist.size(); i++){
             try{
-                outputer.format("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s%n", eptr.getEmployeeID(), eptr.getSsn(), eptr.getLname(), eptr.getFname(),
+                outputer.format("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s%n", eptr.getEmployeeID(), eptr.getSsn(), eptr.getFname(), eptr.getLname(),
                         eptr.getGender(), eptr.getPhoneNumber(), eptr.getEmail(), eptr.getHireDate(), eptr.getEndDate());
                 
                 eptr = eptr.getNext();

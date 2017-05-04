@@ -24,8 +24,8 @@ public class EmployeeNode {
         private EmployeeNode next;
     
     // constructor method
-	public EmployeeNode(String fName, String lName, String ssn, String gender,
-                            String employeeID, String phoneNumber, String email, String HireDate, String EndDate)
+	public EmployeeNode(String employeeID, String ssn, String fName, String lName,  String gender,
+                            String phoneNumber, String email, String HireDate, String EndDate)
         {
         this.fName = fName;
         this.lName = lName;

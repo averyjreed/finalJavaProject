@@ -1,5 +1,7 @@
 package finalproject;
 
+import static finalproject.FinalProject.addEmployee;
+import static finalproject.FinalProject.closeEmployeeFile;
 import java.util.Enumeration;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.ButtonGroup;
@@ -415,6 +417,7 @@ public class EmployeePage extends javax.swing.JFrame {
     }//GEN-LAST:event_payrollmenuMouseClicked
 
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
+        FinalProject.addEmployee();
         FinalProject.closeEmployeeFile();
         dispose();
     }//GEN-LAST:event_closeMouseClicked
@@ -471,6 +474,8 @@ public class EmployeePage extends javax.swing.JFrame {
             errorMsg.setText("Please select either Male or Female");
         }
         else{
+           FinalProject.emplist.add(employeeID.getText(),ssn.getText(), fName.getText(), lName.getText(),
+                                getGender(bgGender), phoneNumber.getText(), email.getText(), hire, end);
            model.addRow(new Object[] {employeeID.getText(), fName.getText(), lName.getText(), getGender(bgGender), phoneNumber.getText(), email.getText(), hire, end} );
            fName.setText("");
            lName.setText("");
@@ -481,10 +486,6 @@ public class EmployeePage extends javax.swing.JFrame {
            HireDate.setDate(null);
            EndDate.setDate(null);
         
-           
-         FinalProject.emplist.add(employeeID.getText(),ssn.getText(), fName.getText(), lName.getText(),
-                                getGender(bgGender), phoneNumber.getText(), email.getText(), hire, end);
-         
         }
         
                                           

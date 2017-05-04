@@ -41,17 +41,17 @@ public class EmployeeLinkedList {
     }
     
 	// method to add data to the linked list
-         public void add(String fName, String lName, String employeeID, String gender, String ssn,
+         public void add(String employeeID, String ssn, String fName, String lName, String gender,
                         String phoneNumber, String email, String HireDate, String EndDate){ 
             if(isEmpty()){
-                head = new EmployeeNode(fName, lName, employeeID, gender, ssn, phoneNumber, email, HireDate, EndDate);
+                head = new EmployeeNode(employeeID, ssn, fName, lName, gender, phoneNumber, email, HireDate, EndDate);
             }
             else{
               EmployeeNode current = head;
               while(current.getNext() !=null){
                   current = current.getNext();
               }
-              current.setNext(new EmployeeNode(fName, lName, employeeID, gender, ssn, phoneNumber, email, HireDate, EndDate) );
+              current.setNext(new EmployeeNode(employeeID, ssn, fName, lName, gender, phoneNumber, email, HireDate, EndDate) );
             }
         }
          
