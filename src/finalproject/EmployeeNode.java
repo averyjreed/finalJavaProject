@@ -31,7 +31,7 @@ public class EmployeeNode {
         this.lName = lName;
         this.ssn = ssn;
         this.gender = gender;
-        this.employeeID = employeeID;
+        this.employeeID= employeeID;
         this.phoneNumber= phoneNumber;
         this.email = email;
         this.HireDate = HireDate;
@@ -97,7 +97,6 @@ public class EmployeeNode {
             return phoneNumber;
 	}
 
-	// set method for gender
 	public void setPhoneNumber(String phoneNumber)
 	{
             this.phoneNumber= phoneNumber;
@@ -108,7 +107,6 @@ public class EmployeeNode {
             return email;
 	}
 
-	// set method for gender
 	public void setEmail(String email)
 	{
             this.email= email;
@@ -119,7 +117,6 @@ public class EmployeeNode {
             return HireDate;
 	}
 
-	// set method for gender
 	public void setHireDate(String HireDate)
 	{
             this.HireDate= HireDate;
@@ -130,7 +127,6 @@ public class EmployeeNode {
             return EndDate;
 	}
 
-	// set method for gender
 	public void setEndDate(String EndDate)
 	{
             this.EndDate= EndDate;
