@@ -8,12 +8,20 @@ import java.util.Date;
  */
 public class FinalProject {
 
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String[] args) {
-        new HomePage().setVisible(true);
+        EmployeeNode eptr;
+        EmployeeLinkedList employee = new EmployeeLinkedList();
         
+        
+        
+        
+        
+        
+        
+        
+        
+        new HomePage().setVisible(true); 
     }
     
     public static boolean verifyAlpha1(String fName){
