@@ -17,20 +17,36 @@ import finalproject.EmployeeLinkedList;
 
 public class FinalProject {
 
+    private static Formatter outputer;
+    public static EmployeeLinkedList empplist;
     
     public static void main(String[] args) {
-        
-        EmployeeLinkedList employee = new EmployeeLinkedList();
-        
-        
-        
-        
-        
-        
-        
-        
+         
+        openEmployeeFile();
         
         new HomePage().setVisible(true); 
+        
+        closeEmployeeFile();
+    }
+    
+    public static void openEmployeeFile(){
+        
+        try{
+            outputer = new Formatter("Employees.txt");
+        }
+        catch(SecurityException securityException){
+            System.err.print("Write permission denied. Terminating");
+            System.exit(1);
+        }
+        catch(FileNotFoundException fileNotFoundException){
+            System.err.print("Error opening file. Terminating");
+            System.exit(1);
+        }
+    }
+    
+    public static void closeEmployeeFile(){
+        if(outputer != null)
+            outputer.close();
     }
     
     public static boolean verifyAlpha1(String fName){

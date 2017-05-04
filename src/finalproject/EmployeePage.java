@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package finalproject;
 
 import java.util.Enumeration;
@@ -440,6 +435,8 @@ public class EmployeePage extends javax.swing.JFrame {
        
         Date chosenEndDate = EndDate.getDate(); 
         String end = String.format("%1$tm/%1$td/%1$tY", chosenEndDate);
+        if(end.equals("null/null/null"))
+            end = "NA";
         
         if(!FinalProject.verifyAlpha1(fName.getText())){
             errorMsg.setText("Employee must have a valid First name");
@@ -466,7 +463,6 @@ public class EmployeePage extends javax.swing.JFrame {
         else if(!bmale.isSelected() && !bfemale.isSelected()){
             errorMsg.setText("Please select either Male or Female");
         }
-        // add employee to linked list?
         else{
            model.addRow(new Object[] {employeeID.getText(), fName.getText(), lName.getText(), getGender(bgGender), phoneNumber.getText(), email.getText(), hire, end} );
            fName.setText("");
