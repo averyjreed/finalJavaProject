@@ -165,6 +165,7 @@ public class PayrollPage extends javax.swing.JFrame {
     }//GEN-LAST:event_payrollmenuMouseClicked
 
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
+        FinalProject.writeFiles();
         dispose();
     }//GEN-LAST:event_closeMouseClicked
 
