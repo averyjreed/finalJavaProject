@@ -1,16 +1,25 @@
 package finalproject;
 
 import java.util.Date;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.NoSuchElementException;
+import java.util.Scanner;
+import java.util.Formatter;
+import java.util.FormatterClosedException;
+import java.io.FileNotFoundException;
+import java.lang.SecurityException;
+import java.io.IOException;
+import java.lang.IllegalStateException;
+import java.nio.file.Files;
+import finalproject.EmployeeNode;
+import finalproject.EmployeeLinkedList;
 
-/**
- *
- * @author mattbentley
- */
 public class FinalProject {
 
     
     public static void main(String[] args) {
-        EmployeeNode eptr;
+        
         EmployeeLinkedList employee = new EmployeeLinkedList();
         
         

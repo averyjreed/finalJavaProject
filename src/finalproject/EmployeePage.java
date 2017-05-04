@@ -16,7 +16,6 @@ import javax.swing.AbstractButton;
 import javax.swing.JTable;
 import java.util.Date;
 
-
 public class EmployeePage extends javax.swing.JFrame {
 
     /**
@@ -105,7 +104,15 @@ public class EmployeePage extends javax.swing.JFrame {
             new String [] {
                 "EmployeeID", "First Name", "Last Name", "Gender", "Phone", "Email", "Hire Date", "End Date"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(etable);
 
         bgGender.add(bmale);
