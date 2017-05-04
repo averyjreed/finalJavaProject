@@ -483,6 +483,10 @@ public class EmployeePage extends javax.swing.JFrame {
     }//GEN-LAST:event_lNameActionPerformed
 
     private void updatebuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatebuttonActionPerformed
+        //THIS IS NOT DONE. input needed is empid and end date?
+        // verify valid empid and end date is present?
+        // end must be after hire
+        
         errorMsg.setText("");
         
         DefaultTableModel model = (DefaultTableModel)etable.getModel();
