@@ -13,7 +13,7 @@ public class EmployeeNode {
 
     // initialize class variables
 	private String fName;
-	private String lastName;
+	private String lName;
         private String ssn;
 	private String gender;
         private String employeeID;
@@ -24,11 +24,11 @@ public class EmployeeNode {
         private EmployeeNode next;
     
     // constructor method
-	public EmployeeNode(String fName, String lastName, String ssn, String gender,
+	public EmployeeNode(String fName, String lName, String ssn, String gender,
                             String employeeID, String phoneNumber, String email, String HireDate, String EndDate)
         {
         this.fName = fName;
-        this.lastName = lastName;
+        this.lName = lName;
         this.ssn = ssn;
         this.gender = gender;
         this.employeeID = employeeID;
@@ -53,11 +53,11 @@ public class EmployeeNode {
     }
 	
     public String getLname(){
-        return lastName;
+        return lName;
     }
 
-    public void setLname(String lastName){
-        this.lastName = lastName;
+    public void setLname(String lName){
+        this.lName = lName;
     }
 
 	// get method for ssn
