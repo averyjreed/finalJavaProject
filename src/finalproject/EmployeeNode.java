@@ -19,13 +19,13 @@ public class EmployeeNode {
         private String employeeID;
         private String phoneNumber;
         private String email;
-        private String hireDate;
-        private String endDate;        
+        private String HireDate;
+        private String EndDate;        
         private EmployeeNode next;
     
     // constructor method
 	public EmployeeNode(String fName, String lastName, String ssn, String gender,
-                            String employeeID, String phoneNumber, String email, String hireDate, String endDate)
+                            String employeeID, String phoneNumber, String email, String HireDate, String EndDate)
         {
         this.fName = fName;
         this.lastName = lastName;
@@ -34,8 +34,8 @@ public class EmployeeNode {
         this.employeeID = employeeID;
         this.phoneNumber= phoneNumber;
         this.email = email;
-        this.hireDate = hireDate;
-        this.endDate = endDate;        
+        this.HireDate = HireDate;
+        this.EndDate = EndDate;        
         this.next = null;
     }
 
@@ -116,24 +116,24 @@ public class EmployeeNode {
         
         public String getHireDate()
 	{
-            return hireDate;
+            return HireDate;
 	}
 
 	// set method for gender
-	public void setHireDate(String hireDate)
+	public void setHireDate(String HireDate)
 	{
-            this.hireDate= hireDate;
+            this.HireDate= HireDate;
 	}
         
         public String getEndDate()
 	{
-            return endDate;
+            return EndDate;
 	}
 
 	// set method for gender
-	public void setEndDate(String endDate)
+	public void setEndDate(String EndDate)
 	{
-            this.endDate= endDate;
+            this.EndDate= EndDate;
 	}
 
     // get method for the next node
