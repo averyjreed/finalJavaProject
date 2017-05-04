@@ -18,11 +18,12 @@ import finalproject.EmployeeLinkedList;
 public class FinalProject {
 
     private static Formatter outputer;
-    public static EmployeeLinkedList empplist;
+    public static EmployeeLinkedList emplist;
     
     public static void main(String[] args) {
          
         openEmployeeFile();
+        emplist = new EmployeeLinkedList();
         
         new HomePage().setVisible(true); 
         
@@ -41,6 +42,23 @@ public class FinalProject {
         catch(FileNotFoundException fileNotFoundException){
             System.err.print("Error opening file. Terminating");
             System.exit(1);
+        }
+    }
+    
+    public static void addEmployee(){
+        EmployeeNode eptr = FinalProject.emplist.getHead();
+        
+        for(int i = 0; i < emplist.size(); i++){
+            try{
+                outputer.format("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s%n", eptr.getEmployeeID(), eptr.getSsn(), eptr.getLname(), eptr.getFname(),
+                        eptr.getGender(), eptr.getPhoneNumber(), eptr.getEmail(), eptr.getHireDate(), eptr.getEndDate());
+                
+                eptr = eptr.getNext();
+            }
+            catch(FormatterClosedException formatterClosedException){
+                System.err.println("Error writing to Employees file. Terminating.");
+                break;
+            }
         }
     }
     
