@@ -17,7 +17,7 @@ import finalproject.EmployeeLinkedList;
 
 public class FinalProject {
 
-    private static Formatter eoutput;
+    private static Formatter output;
     public static EmployeeLinkedList emplist;
     public static DepartmentLinkedList deplist;
     public static AssignmentLinkedList asnlist;
@@ -54,18 +54,20 @@ public class FinalProject {
         }
         catch(NoSuchElementException elementException){
             System.err.println("File improperly formed. Terminating.");
+            System.exit(1);
         }
         catch(IllegalStateException stateException){
             System.err.println("Error reading from file. Terminating.");
+            System.exit(1);
         }
         
         input.close();
     } // end of read employee
     
-    public static void writeEmployee(){
-     
+    public static void writeEmployeeFile(){
+        
         try{
-            eoutput = new Formatter("Employees.txt");
+            output = new Formatter("Employees.txt");
         }
         catch(SecurityException securityException){
             System.err.print("Write permission denied. Terminating");
@@ -76,12 +78,12 @@ public class FinalProject {
             System.exit(1);
         }
         
-        
-
         EmployeeNode eptr = FinalProject.emplist.getHead();
         for(int i = 0; i < emplist.size(); i++){
             try{
-                eoutput.format("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s%n", eptr.getEmployeeID(), eptr.getSsn(), eptr.getFname(), eptr.getLname(),
+                System.out.printf("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s%n", eptr.getEmployeeID(), eptr.getSsn(), eptr.getFname(), eptr.getLname(),
+                        eptr.getGender(), eptr.getPhoneNumber(), eptr.getEmail(), eptr.getHireDate(), eptr.getEndDate());
+                output.format("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s%n", eptr.getEmployeeID(), eptr.getSsn(), eptr.getFname(), eptr.getLname(),
                         eptr.getGender(), eptr.getPhoneNumber(), eptr.getEmail(), eptr.getHireDate(), eptr.getEndDate());
                 
                 eptr = eptr.getNext();
@@ -91,13 +93,14 @@ public class FinalProject {
                 break;
             }
             
-            closeEmployeeFile();
         }
+        
+        closeEmployeeFile();
     } // end of write employee
     
     public static void closeEmployeeFile(){
-        if(eoutput != null)
-            eoutput.close();
+        if(output != null)
+            output.close();
     }
     
     public static boolean verifyAlpha1(String fName){

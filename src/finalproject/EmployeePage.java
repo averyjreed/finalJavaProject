@@ -1,7 +1,5 @@
 package finalproject;
 
-import static finalproject.FinalProject.addEmployee;
-import static finalproject.FinalProject.closeEmployeeFile;
 import java.util.Enumeration;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.ButtonGroup;
@@ -417,8 +415,7 @@ public class EmployeePage extends javax.swing.JFrame {
     }//GEN-LAST:event_payrollmenuMouseClicked
 
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
-        FinalProject.writeEmployee();
-        FinalProject.closeEmployeeFile();
+        FinalProject.writeEmployeeFile();
         dispose();
     }//GEN-LAST:event_closeMouseClicked
 

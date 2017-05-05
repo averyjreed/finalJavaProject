@@ -34,10 +34,10 @@ public class EmployeeLinkedList {
 	// method to check if the linked list is empty
     public boolean isEmpty() 
     {
-            if(head == null){
-                return true;}
-            else{
-                return false;}
+            if(head == null)
+                return true;
+            else
+                return false;
     }
     
 	// method to add data to the linked list
@@ -48,7 +48,7 @@ public class EmployeeLinkedList {
             }
             else{
               EmployeeNode current = head;
-              while(current.getNext() !=null){
+              while(current.getNext() != null){
                   current = current.getNext();
               }
               current.setNext(new EmployeeNode(employeeID, ssn, fName, lName, gender, phoneNumber, email, HireDate, EndDate) );
