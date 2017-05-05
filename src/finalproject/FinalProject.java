@@ -101,6 +101,21 @@ public class FinalProject {
             output.close();
     }
     
+    public static void closeAssignmentFile(){
+        if(output != null)
+            output.close();
+    }
+    
+    public static void closeDepartmentFile(){
+        if(output != null)
+            output.close();
+    }
+    
+    public static void closePayrollFile(){
+        if(output != null)
+            output.close();
+    }
+    
     public static boolean verifyAlpha1(String fName){
         return fName.matches("[A-Z][a-zA-Z]*");
     }

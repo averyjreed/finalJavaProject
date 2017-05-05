@@ -162,8 +162,18 @@ public class EmployeePage extends javax.swing.JFrame {
         });
 
         currentbutton.setText("Current");
+        currentbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                currentbuttonActionPerformed(evt);
+            }
+        });
 
         pastbutton.setText("Past");
+        pastbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pastbuttonActionPerformed(evt);
+            }
+        });
 
         homemenu.setText("Home");
         homemenu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -465,10 +475,8 @@ public class EmployeePage extends javax.swing.JFrame {
         }
         else if(hire.equals("null/null/null")){
             errorMsg.setText("No Hire Date was selected.");
-        }
-        /*else if(!verifyDates(HireDate.getDate(), EndDate.getDate() ) ){
-            errorMsg.setText("Hire Date cannot be after End Date");
-        }    */
+        }  
+        // verify dates goes here
         else if(!bmale.isSelected() && !bfemale.isSelected()){
             errorMsg.setText("Please select either Male or Female");
         }
@@ -521,10 +529,57 @@ public class EmployeePage extends javax.swing.JFrame {
             else
                 errorMsg.setText("No Employee was selected");
         }    
-        else
-            model.setValueAt(end, etable.getSelectedRow(), 7);
+        else{
+            if(end.equals("null/null/null"))
+                errorMsg.setText("End Date must be empty to update it");
+            else
+                model.setValueAt(end, etable.getSelectedRow(), 7);
+        }
     }//GEN-LAST:event_updatebuttonActionPerformed
 
+    private void currentbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_currentbuttonActionPerformed
+        CurrentEmployees();
+    }//GEN-LAST:event_currentbuttonActionPerformed
+
+    private void pastbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pastbuttonActionPerformed
+        PastEmployees();
+    }//GEN-LAST:event_pastbuttonActionPerformed
+
+    private void CurrentEmployees(){
+    DefaultTableModel model = (DefaultTableModel) etable.getModel();
+    
+    model.setRowCount(0);
+    
+    EmployeeNode eptr = FinalProject.emplist.getHead();
+    for(int i = 0; i < FinalProject.emplist.size(); i++){
+    if(eptr.getEndDate().equals("NA")){
+    Object[] newRowData={eptr.getEmployeeID(), eptr.getLname(), eptr.getFname(), eptr.getGender(), eptr.getPhoneNumber(), eptr.getEmail(), eptr.getHireDate(), eptr.getEndDate()};
+    model.addRow(newRowData);
+    }
+    eptr = eptr.getNext();
+    
+    }
+    errorMsg.setText("Current Employees are displayed.");
+    }
+    
+    private void PastEmployees(){
+    DefaultTableModel model = (DefaultTableModel) etable.getModel();
+    
+    model.setRowCount(0);
+    
+    EmployeeNode eptr = FinalProject.emplist.getHead();
+    for(int i = 0; i < FinalProject.emplist.size(); i++){
+    if(!eptr.getEndDate().equals("NA")){
+    Object[] newRowData={eptr.getEmployeeID(), eptr.getLname(), eptr.getFname(), eptr.getGender(), eptr.getPhoneNumber(), eptr.getEmail(), eptr.getHireDate(), eptr.getEndDate()};
+    model.addRow(newRowData);
+    }
+    eptr = eptr.getNext();
+    
+    }
+    errorMsg.setText("Past Employees are displayed.");
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
