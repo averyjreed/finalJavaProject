@@ -81,8 +81,6 @@ public class FinalProject {
         EmployeeNode eptr = FinalProject.emplist.getHead();
         for(int i = 0; i < emplist.size(); i++){
             try{
-                System.out.printf("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s%n", eptr.getEmployeeID(), eptr.getSsn(), eptr.getFname(), eptr.getLname(),
-                        eptr.getGender(), eptr.getPhoneNumber(), eptr.getEmail(), eptr.getHireDate(), eptr.getEndDate());
                 output.format("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s%n", eptr.getEmployeeID(), eptr.getSsn(), eptr.getFname(), eptr.getLname(),
                         eptr.getGender(), eptr.getPhoneNumber(), eptr.getEmail(), eptr.getHireDate(), eptr.getEndDate());
                 
