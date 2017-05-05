@@ -17,13 +17,17 @@ import finalproject.EmployeeLinkedList;
 
 public class FinalProject {
 
-    private static Formatter outputer;
+    private static Formatter eoutput;
     public static EmployeeLinkedList emplist;
+    public static DepartmentLinkedList deplist;
+    public static AssignmentLinkedList asnlist;
+    //payroll list goes here
+    private static Scanner input;
     
     public static void main(String[] args) {
          
         openEmployeeFile();
-        emplist = new EmployeeLinkedList();
+        readEmployeeFile();
 
         new HomePage().setVisible(true); 
         
@@ -32,24 +36,52 @@ public class FinalProject {
     public static void openEmployeeFile(){
         
         try{
-            outputer = new Formatter("Employees.txt");
+            input = new Scanner(Paths.get("Employees.txt"));
         }
-        catch(SecurityException securityException){
-            System.err.print("Write permission denied. Terminating");
-            System.exit(1);
-        }
-        catch(FileNotFoundException fileNotFoundException){
+        catch(IOException ioexception){
             System.err.print("Error opening file. Terminating");
             System.exit(1);
         }
     }
     
-    public static void addEmployee(){
-        EmployeeNode eptr = FinalProject.emplist.getHead();
+    private static void readEmployeeFile(){
+        emplist = new EmployeeLinkedList();
         
+        try{
+            while(input.hasNext()){
+                emplist.add(input.next(), input.next(), input.next(), input.next(), input.next(), input.next(), input.next(), input.next(), input.next());
+            }
+        }
+        catch(NoSuchElementException elementException){
+            System.err.println("File improperly formed. Terminating.");
+        }
+        catch(IllegalStateException stateException){
+            System.err.println("Error reading from file. Terminating.");
+        }
+        
+        input.close();
+    } // end of read employee
+    
+    public static void writeEmployee(){
+     
+        try{
+            eoutput = new Formatter("Employees.txt");
+        }
+        catch(SecurityException securityException){
+            System.err.print("Write permission denied. Terminating");
+            System.exit(1);
+        }
+        catch(FileNotFoundException fileException){
+            System.err.print("Error opening file. Terminating");
+            System.exit(1);
+        }
+        
+        
+
+        EmployeeNode eptr = FinalProject.emplist.getHead();
         for(int i = 0; i < emplist.size(); i++){
             try{
-                outputer.format("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s%n", eptr.getEmployeeID(), eptr.getSsn(), eptr.getFname(), eptr.getLname(),
+                eoutput.format("%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s%n", eptr.getEmployeeID(), eptr.getSsn(), eptr.getFname(), eptr.getLname(),
                         eptr.getGender(), eptr.getPhoneNumber(), eptr.getEmail(), eptr.getHireDate(), eptr.getEndDate());
                 
                 eptr = eptr.getNext();
@@ -58,12 +90,14 @@ public class FinalProject {
                 System.err.println("Error writing to Employees file. Terminating.");
                 break;
             }
+            
+            closeEmployeeFile();
         }
-    }
+    } // end of write employee
     
     public static void closeEmployeeFile(){
-        if(outputer != null)
-            outputer.close();
+        if(eoutput != null)
+            eoutput.close();
     }
     
     public static boolean verifyAlpha1(String fName){
@@ -102,8 +136,4 @@ public class FinalProject {
            return email.matches("\\S*[@]\\S*[.][a-zA-Z][a-zA-Z][a-zA-Z]");
     }
     
-    private boolean verifyDates(Date hr, Date lv) {
-        if (hr.compareTo(lv) < 0) 
-            return true;
-        return false;}
 }

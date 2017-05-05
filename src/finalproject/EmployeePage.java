@@ -274,7 +274,7 @@ public class EmployeePage extends javax.swing.JFrame {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                    .addComponent(addbutton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                                                    .addComponent(addbutton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                     .addComponent(bmale)
                                                     .addComponent(updatebutton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                                 .addGap(18, 18, 18)
@@ -291,9 +291,9 @@ public class EmployeePage extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(errorMsg, javax.swing.GroupLayout.DEFAULT_SIZE, 578, Short.MAX_VALUE)
+                    .addComponent(errorMsg, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 664, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -417,7 +417,7 @@ public class EmployeePage extends javax.swing.JFrame {
     }//GEN-LAST:event_payrollmenuMouseClicked
 
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
-        FinalProject.addEmployee();
+        FinalProject.writeEmployee();
         FinalProject.closeEmployeeFile();
         dispose();
     }//GEN-LAST:event_closeMouseClicked
@@ -438,8 +438,8 @@ public class EmployeePage extends javax.swing.JFrame {
     private void addbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addbuttonActionPerformed
         
         errorMsg.setText("");
-        
         DefaultTableModel model = (DefaultTableModel)etable.getModel();
+        
         Date chosenHireDate = HireDate.getDate(); 
         String hire = String.format("%1$tm/%1$td/%1$tY", chosenHireDate);
        
@@ -469,13 +469,16 @@ public class EmployeePage extends javax.swing.JFrame {
         else if(hire.equals("null/null/null")){
             errorMsg.setText("No Hire Date was selected.");
         }
-        // verify dates check goes here
+        /*else if(!verifyDates(HireDate.getDate(), EndDate.getDate() ) ){
+            errorMsg.setText("Hire Date cannot be after End Date");
+        }    */
         else if(!bmale.isSelected() && !bfemale.isSelected()){
             errorMsg.setText("Please select either Male or Female");
         }
         else{
            FinalProject.emplist.add(employeeID.getText(),ssn.getText(), fName.getText(), lName.getText(),
                                 getGender(bgGender), phoneNumber.getText(), email.getText(), hire, end);
+           
            model.addRow(new Object[] {employeeID.getText(), fName.getText(), lName.getText(), getGender(bgGender), phoneNumber.getText(), email.getText(), hire, end} );
            fName.setText("");
            lName.setText("");
@@ -487,10 +490,15 @@ public class EmployeePage extends javax.swing.JFrame {
            EndDate.setDate(null);
         
         }
-        
-                                          
+                                             
     }//GEN-LAST:event_addbuttonActionPerformed
-
+    
+    private boolean verifyDates(Date hr, Date lv) {
+        if(hr.compareTo(lv) < 0) 
+            return true;
+        return false;
+    }
+    
     private void fNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_fNameActionPerformed
