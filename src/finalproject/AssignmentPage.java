@@ -111,7 +111,7 @@ public class AssignmentPage extends javax.swing.JFrame {
 
         jButton4.setText("Past");
 
-        empcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select One" }));
+        empcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "44440000" }));
 
         depcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select One" }));
 
@@ -338,6 +338,7 @@ public class AssignmentPage extends javax.swing.JFrame {
     }//GEN-LAST:event_closeActionPerformed
 
     private void asnaddbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asnaddbuttonActionPerformed
+        
         errormsg.setText("");
         DefaultTableModel model = (DefaultTableModel)atable.getModel();
         
@@ -346,13 +347,47 @@ public class AssignmentPage extends javax.swing.JFrame {
         
         Date chosenEndDate = EndDate.getDate(); 
         String aend = String.format("%1$tm/%1$td/%1$tY", chosenEndDate);
+        if(aend.equals("null/null/null"))
+            aend = "NA";
         
-        //FinalProject.asnlist.add(empcb.getSelectedItem().toString(), depcb.getSelectedItem().toString(), rankcb.getSelectedItem().toString(), begin, aend);
-           
-        model.addRow(new Object[] {empcb.getSelectedItem().toString(), depcb.getSelectedItem().toString(), rankcb.getSelectedItem().toString(), begin, aend} );
-      
+        String afname = empIdTofName(empcb.getSelectedItem().toString());
+        String alname = empIdTolName(empcb.getSelectedItem().toString());
+        
+        if(begin.equals("null/null/null")){
+            errormsg.setText("No Begin Date was selected.");
+        }
+        // verify end date is after begin date
+        else{
+            FinalProject.asnlist.add(depcb.getSelectedItem().toString(), empcb.getSelectedItem().toString(), alname, afname, rankcb.getSelectedItem().toString(), begin, aend);
+        
+            model.addRow(new Object[] {depcb.getSelectedItem().toString(), empcb.getSelectedItem().toString(), alname, afname, rankcb.getSelectedItem().toString(), begin, aend} );
+        }
     }//GEN-LAST:event_asnaddbuttonActionPerformed
 
+    public String empIdTofName(String empid){
+     
+    EmployeeNode eptr = FinalProject.emplist.getHead();
+        for(int i = 0; i < FinalProject.emplist.size(); i++){
+    
+            if(empid.compareTo(eptr.getEmployeeID()) == 0)
+                return eptr.getFname();
+            eptr = eptr.getNext();
+        }
+        return null;
+    }
+    
+    public String empIdTolName(String empid){
+     
+    EmployeeNode eptr = FinalProject.emplist.getHead();
+        for(int i = 0; i < FinalProject.emplist.size(); i++){
+    
+            if(empid.compareTo(eptr.getEmployeeID()) == 0)
+                return eptr.getLname();
+            eptr = eptr.getNext();
+        }
+        return null;
+    }
+     
     /**
      * @param args the command line arguments
      */
