@@ -1,10 +1,14 @@
 Accounting
-Production
-Product Management
-Marketing
-Sales
-Customer Service
+Assurance
+Customer
 Distribution
-Quality Assurance
-Research
 Executive
+FFFF
+Management
+Marketing
+Product
+Production
+Quality
+Research
+Sales
+Service

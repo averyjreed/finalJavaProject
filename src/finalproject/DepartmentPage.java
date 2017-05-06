@@ -25,6 +25,7 @@ public class DepartmentPage extends javax.swing.JFrame {
     public DepartmentPage() {
         initComponents();
         deplist.sortDepName();
+        showDep();
     }
 
     /**
@@ -239,7 +240,7 @@ public class DepartmentPage extends javax.swing.JFrame {
 
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
         FinalProject.writeEmployeeFile();
-        //FinalProject.writeDepartmentFile();
+        FinalProject.writeDepartmentFile();
         FinalProject.writeAssignmentFile();
         //FinalProject.writePayrollFile();
         dispose();
@@ -260,11 +261,24 @@ public class DepartmentPage extends javax.swing.JFrame {
         else{
            FinalProject.deplist.add(department.getText());
            
-           model.addRow(new Object[] {department.getText(), department.getText(), department.getText()} );
+           model.setRowCount(0); // clears table
+           deplist.sortDepName();
+           showDep();
            department.setText("");
         }
     }//GEN-LAST:event_daddbuttonActionPerformed
 
+    public void showDep(){
+    DefaultTableModel model = (DefaultTableModel) dtable.getModel();
+        DepartmentNode dptr = FinalProject.deplist.getHead(); 
+            for (int i = 0; i < FinalProject.deplist.size(); i++) {
+           
+                Object[] originalFiles = {dptr.getDname()};
+                model.addRow(originalFiles);
+                dptr = dptr.getNext();
+            }
+    }
+    
     /**
      * @param args the command line arguments
      */

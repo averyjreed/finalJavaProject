@@ -207,6 +207,36 @@ public class FinalProject {
         closeAssignmentFile();
     } // end of write employee
     
+    public static void writeDepartmentFile(){
+        
+        try{
+            output = new Formatter("Departments.txt");
+        }
+        catch(SecurityException securityException){
+            System.err.print("Write permission denied. Terminating");
+            System.exit(1);
+        }
+        catch(FileNotFoundException fileException){
+            System.err.print("Error opening file. Terminating");
+            System.exit(1);
+        }
+        
+        DepartmentNode dptr = FinalProject.deplist.getHead();
+        for(int i = 0; i < deplist.size(); i++){
+            try{
+                output.format("%s%n", dptr.getDname());
+                
+                dptr = dptr.getNext();
+            }
+            catch(FormatterClosedException formatterClosedException){
+                System.err.println("Error writing to Employees file. Terminating.");
+                break;
+            }
+            
+        }
+        
+        closeAssignmentFile();
+    } // end of write employee
     
     public static void closeEmployeeFile(){
         if(output != null)
