@@ -106,18 +106,20 @@
                                   <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="EndDate" pref="178" max="32767" attributes="0"/>
-                                  <Component id="BeginDate" pref="178" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                                       <Component id="jButton4" alignment="0" max="32767" attributes="0"/>
                                       <Component id="asnaddbutton" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jButton2" alignment="0" max="32767" attributes="0"/>
                                       <Component id="jButton1" alignment="0" pref="102" max="32767" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="1" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                                      <Component id="rankcb" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="BeginDate" alignment="1" pref="172" max="32767" attributes="0"/>
+                                          <Component id="rankcb" max="32767" attributes="0"/>
+                                          <Component id="EndDate" alignment="1" max="32767" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                           </Group>

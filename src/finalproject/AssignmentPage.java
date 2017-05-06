@@ -23,6 +23,7 @@ public class AssignmentPage extends javax.swing.JFrame {
      */
     public AssignmentPage() {
         initComponents();
+        getDepText();
     }
 
     /**
@@ -205,17 +206,18 @@ public class AssignmentPage extends javax.swing.JFrame {
                                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel5))
                                 .addGap(24, 24, 24)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(EndDate, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
-                                    .addComponent(BeginDate, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(jButton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(asnaddbutton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGroup(layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
-                                        .addComponent(rankcb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(BeginDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+                                            .addComponent(rankcb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(EndDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(errormsg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -275,18 +277,6 @@ public class AssignmentPage extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_homemenuMouseClicked
 
-    private boolean verifyDates(Date hr, Date lv) {
-        if (hr.compareTo(lv) < 0) 
-            return true; 
-        return false;}
-    
-    /*Date chosenHireDate = HireDate.getDate(); 
-    String hire = String.format("%1$tm/%1$td/%1$tY", chosenHireDate); 
-        if (hire.equals("null/null/null")) { 
-            lbMessage.setText("No Hire Date was selected."); 
-            return; }
-    HireDate.setDate(null);  // clears JCalendar field*/ // add to validations!!
-    
       /* String hireDateString = eptr.getHiredate();
     DateFormat df = new SimpleDateFormat("MM/dd/yyyy"); 
     Date hireDate; 
@@ -361,9 +351,24 @@ public class AssignmentPage extends javax.swing.JFrame {
             FinalProject.asnlist.add(depcb.getSelectedItem().toString(), empcb.getSelectedItem().toString(), alname, afname, rankcb.getSelectedItem().toString(), begin, aend);
         
             model.addRow(new Object[] {depcb.getSelectedItem().toString(), empcb.getSelectedItem().toString(), alname, afname, rankcb.getSelectedItem().toString(), begin, aend} );
+            depcb.setSelectedIndex(0);
+            empcb.setSelectedIndex(0);
+            rankcb.setSelectedIndex(0);
         }
     }//GEN-LAST:event_asnaddbuttonActionPerformed
 
+    private void getDepText(){
+        DepartmentNode dptr = FinalProject.deplist.getHead();
+        
+        depcb.removeAllItems();
+        depcb.addItem("Select One");
+        
+        for(int i = 0; i < FinalProject.deplist.size(); i++){
+            depcb.addItem(dptr.getDname());
+            dptr = dptr.getNext();
+        }
+    }
+    
     public String empIdTofName(String empid){
      
     EmployeeNode eptr = FinalProject.emplist.getHead();
@@ -387,7 +392,13 @@ public class AssignmentPage extends javax.swing.JFrame {
         }
         return null;
     }
-     
+    
+    private boolean verifyDates(Date hr, Date lv) {
+        if(hr.compareTo(lv) < 0) 
+            return true;
+        return false;
+    }
+    
     /**
      * @param args the command line arguments
      */

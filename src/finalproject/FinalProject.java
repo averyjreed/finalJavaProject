@@ -32,8 +32,8 @@ public class FinalProject {
         readAssignmentFile();
         openDepartmentFile();
         readDepartmentFile();
-        //openPayrollFile();
-        //readPayrollFile();
+        //openPayrollFile(); if using txt file
+        //readPayrollFile(); if using txt file
 
         new HomePage().setVisible(true); 
         
@@ -142,26 +142,6 @@ public class FinalProject {
         
         input.close();
     } // end of read department
-    
-    private static void readPayrollFile(){
-        paylist = new PayrollLinkedList();
-        
-        try{
-            while(input.hasNext()){
-                paylist.add(input.next(), input.next());
-            }
-        }
-        catch(NoSuchElementException elementException){
-            System.err.println("File improperly formed. Terminating.");
-            System.exit(1);
-        }
-        catch(IllegalStateException stateException){
-            System.err.println("Error reading from file. Terminating.");
-            System.exit(1);
-        }
-        
-        input.close();
-    } // end of read payroll
     
     public static void writeEmployeeFile(){
         
