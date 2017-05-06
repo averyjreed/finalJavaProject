@@ -24,6 +24,15 @@ public class EmployeePage extends javax.swing.JFrame {
      */
     public EmployeePage() {
         initComponents();
+        
+        DefaultTableModel model = (DefaultTableModel) etable.getModel();
+        EmployeeNode eptr = FinalProject.emplist.getHead(); 
+            for (int i = 0; i < FinalProject.emplist.size(); i++) {
+           
+                Object[] originalFiles = {eptr.getEmployeeID(), eptr.getLname(), eptr.getFname(), eptr.getGender(), eptr.getPhoneNumber(), eptr.getEmail(), eptr.getHireDate(), eptr.getEndDate()};
+                model.addRow(originalFiles);
+                eptr = eptr.getNext();
+            }
     }
 
     /**
