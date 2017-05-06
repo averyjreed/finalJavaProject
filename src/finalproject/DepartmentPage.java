@@ -7,6 +7,7 @@ package finalproject;
 
 import java.util.Enumeration;
 import javax.swing.table.DefaultTableModel;
+import static finalproject.FinalProject.deplist;
 import javax.swing.ButtonGroup;
 import java.util.Date;
 import java.text.DateFormat;
@@ -23,6 +24,7 @@ public class DepartmentPage extends javax.swing.JFrame {
      */
     public DepartmentPage() {
         initComponents();
+        deplist.sortDepName();
     }
 
     /**

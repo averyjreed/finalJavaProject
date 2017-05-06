@@ -15,6 +15,7 @@ import java.awt.Color;
 import javax.swing.AbstractButton;
 import javax.swing.JTable;
 import java.util.Date;
+import static finalproject.FinalProject.asnlist;
 
 public class AssignmentPage extends javax.swing.JFrame {
 
@@ -23,6 +24,7 @@ public class AssignmentPage extends javax.swing.JFrame {
      */
     public AssignmentPage() {
         initComponents();
+        asnlist.sortAsnDepName();
         showAsn();
         getDepText();
         getEID();
@@ -114,7 +116,7 @@ public class AssignmentPage extends javax.swing.JFrame {
 
         jButton4.setText("Past");
 
-        empcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "44440000" }));
+        empcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select One" }));
 
         depcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select One" }));
 
@@ -349,8 +351,11 @@ public class AssignmentPage extends javax.swing.JFrame {
         // verify end date is after begin date
         else{
             FinalProject.asnlist.add(depcb.getSelectedItem().toString(), empcb.getSelectedItem().toString(), alname, afname, rankcb.getSelectedItem().toString(), begin, aend);
-        
-            model.addRow(new Object[] {depcb.getSelectedItem().toString(), empcb.getSelectedItem().toString(), alname, afname, rankcb.getSelectedItem().toString(), begin, aend} );
+            
+            model.setRowCount(0); // clears table
+            asnlist.sortAsnDepName(); // sorts by department name
+            showAsn(); //repopulates table
+            
             depcb.setSelectedIndex(0);
             empcb.setSelectedIndex(0);
             rankcb.setSelectedIndex(0);
