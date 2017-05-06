@@ -49,10 +49,10 @@ public class AssignmentPage extends javax.swing.JFrame {
         EndDate = new com.toedter.calendar.JDateChooser();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        currentbutton = new javax.swing.JButton();
+        updatebutton = new javax.swing.JButton();
         asnaddbutton = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        pastbutton = new javax.swing.JButton();
         empcb = new javax.swing.JComboBox<>();
         depcb = new javax.swing.JComboBox<>();
         rankcb = new javax.swing.JComboBox<>();
@@ -103,9 +103,19 @@ public class AssignmentPage extends javax.swing.JFrame {
 
         jLabel5.setText("Rank:");
 
-        jButton1.setText("Current");
+        currentbutton.setText("Current");
+        currentbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                currentbuttonActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Update");
+        updatebutton.setText("Update");
+        updatebutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updatebuttonActionPerformed(evt);
+            }
+        });
 
         asnaddbutton.setText("Add");
         asnaddbutton.addActionListener(new java.awt.event.ActionListener() {
@@ -114,7 +124,12 @@ public class AssignmentPage extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Past");
+        pastbutton.setText("Past");
+        pastbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pastbuttonActionPerformed(evt);
+            }
+        });
 
         empcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select One" }));
 
@@ -217,10 +232,10 @@ public class AssignmentPage extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(110, 110, 110)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jButton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pastbutton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(asnaddbutton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(updatebutton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(currentbutton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(errormsg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -257,11 +272,11 @@ public class AssignmentPage extends javax.swing.JFrame {
                         .addGap(43, 43, 43)
                         .addComponent(asnaddbutton)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)
+                        .addComponent(updatebutton)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1)
+                        .addComponent(currentbutton)
                         .addGap(16, 16, 16)
-                        .addComponent(jButton4))
+                        .addComponent(pastbutton))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -345,9 +360,14 @@ public class AssignmentPage extends javax.swing.JFrame {
         String afname = empIdTofName(empcb.getSelectedItem().toString());
         String alname = empIdTolName(empcb.getSelectedItem().toString());
         
-        if(begin.equals("null/null/null")){
-            errormsg.setText("No Begin Date was selected.");
-        }
+        if(cbsel(empcb.getSelectedItem().toString()))
+            errormsg.setText("Please choose an EmployeeID");
+        else if(cbsel(depcb.getSelectedItem().toString()))
+            errormsg.setText("Please choose a Department");
+        else if(cbsel(rankcb.getSelectedItem().toString()))
+            errormsg.setText("Please choose a Rank");
+        else if(begin.equals("null/null/null"))
+            errormsg.setText("No Begin Date was selected.");     
         // verify end date is after begin date
         else{
             FinalProject.asnlist.add(depcb.getSelectedItem().toString(), empcb.getSelectedItem().toString(), alname, afname, rankcb.getSelectedItem().toString(), begin, aend);
@@ -363,6 +383,52 @@ public class AssignmentPage extends javax.swing.JFrame {
             EndDate.setDate(null);
         }
     }//GEN-LAST:event_asnaddbuttonActionPerformed
+
+    private boolean cbsel(String depname){
+        return depname.matches("[S][e][l][e][c][t] [O][n][e]");
+    }
+    
+    private void currentbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_currentbuttonActionPerformed
+        CurrentAssignments();
+    }//GEN-LAST:event_currentbuttonActionPerformed
+
+    private void pastbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pastbuttonActionPerformed
+        PastAssignments();
+    }//GEN-LAST:event_pastbuttonActionPerformed
+
+    private void updatebuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatebuttonActionPerformed
+        
+        errormsg.setText("");
+        
+        DefaultTableModel model = (DefaultTableModel)atable.getModel();
+        Date chosenEndDate = EndDate.getDate(); 
+        String end = String.format("%1$tm/%1$td/%1$tY", chosenEndDate);
+        
+        if(atable.getSelectedRow() == -1){
+            if(atable.getRowCount() == 0)
+                errormsg.setText("Table is empty");
+            else
+                errormsg.setText("No Assignment was selected");
+        }    
+        else{
+            if(end.equals("null/null/null"))
+                errormsg.setText("No End Date was chosen");
+            else{
+                
+                AssignmentNode eptr = FinalProject.asnlist.getHead();
+                for(int i = 0; i < FinalProject.asnlist.size(); i++){
+                    
+                    if(atable.getSelectedRow() == i)
+                        eptr.setEdate(end);
+                    
+                    eptr = eptr.getNext();
+                }
+                
+                model.setValueAt(end, atable.getSelectedRow(), 6);
+                EndDate.setDate(null);
+            }    
+        }                 
+    }//GEN-LAST:event_updatebuttonActionPerformed
 
     public void showAsn(){
     DefaultTableModel model = (DefaultTableModel) atable.getModel();
@@ -423,6 +489,38 @@ public class AssignmentPage extends javax.swing.JFrame {
         return null;
     }
     
+    private void CurrentAssignments(){
+    DefaultTableModel model = (DefaultTableModel) atable.getModel();
+    model.setRowCount(0);
+    
+    AssignmentNode aptr = FinalProject.asnlist.getHead();
+    for(int i = 0; i < FinalProject.asnlist.size(); i++){
+    if(aptr.getEdate().equals("NA")){
+    Object[] newRowData={aptr.getDname(), aptr.getEmployeeID(), aptr.getLname(), aptr.getfName(), aptr.getRank(), aptr.getBdate(), aptr.getEdate()};
+    model.addRow(newRowData);
+    }
+    aptr = aptr.getNext();
+    
+    }
+    errormsg.setText("Current Assignments are displayed.");
+    }
+    
+    private void PastAssignments(){
+    DefaultTableModel model = (DefaultTableModel) atable.getModel();
+    model.setRowCount(0);
+    
+    AssignmentNode aptr = FinalProject.asnlist.getHead();
+    for(int i = 0; i < FinalProject.asnlist.size(); i++){
+    if(!aptr.getEdate().equals("NA")){
+    Object[] newRowData={aptr.getDname(), aptr.getEmployeeID(), aptr.getLname(), aptr.getfName(), aptr.getRank(), aptr.getBdate(), aptr.getEdate()};
+    model.addRow(newRowData);
+    }
+    aptr = aptr.getNext();
+    
+    }
+    errormsg.setText("Past Assignments are displayed.");
+    }
+    
     private boolean verifyDates(Date hr, Date lv) {
         if(hr.compareTo(lv) < 0) 
             return true;
@@ -471,15 +569,13 @@ public class AssignmentPage extends javax.swing.JFrame {
     private javax.swing.JMenu assignmentmenu;
     private javax.swing.JTable atable;
     private javax.swing.JMenu close;
+    private javax.swing.JButton currentbutton;
     private javax.swing.JMenu departmentmenu;
     private javax.swing.JComboBox<String> depcb;
     private javax.swing.JComboBox<String> empcb;
     private javax.swing.JMenu employeemenu;
     private javax.swing.JLabel errormsg;
     private javax.swing.JMenu homemenu;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -488,7 +584,9 @@ public class AssignmentPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton pastbutton;
     private javax.swing.JMenu payrollmenu;
     private javax.swing.JComboBox<String> rankcb;
+    private javax.swing.JButton updatebutton;
     // End of variables declaration//GEN-END:variables
 }
