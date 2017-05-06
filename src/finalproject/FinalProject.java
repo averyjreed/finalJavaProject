@@ -161,7 +161,7 @@ public class FinalProject {
         }
         
         input.close();
-    } // end of read employee
+    } // end of read payroll
     
     public static void writeEmployeeFile(){
         
@@ -206,11 +206,6 @@ public class FinalProject {
     }
     
     public static void closeDepartmentFile(){
-        if(output != null)
-            output.close();
-    }
-    
-    public static void closePayrollFile(){
         if(output != null)
             output.close();
     }
