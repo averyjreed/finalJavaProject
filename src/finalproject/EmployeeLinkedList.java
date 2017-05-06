@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package finalproject;
 
+import static finalproject.FinalProject.emplist;
 /**
  *
  * @author averyreed
@@ -69,4 +65,44 @@ public class EmployeeLinkedList {
           return size;
         }
     
+    public void sortEmpLname(){
+        EmployeeNode n0, n1, n2;
+        
+        for(int i = 1; i < emplist.size(); i++){
+            
+            n0 = head;
+            n1 = head;
+            n2 = n1.getNext();
+            
+            for(int j = 1; j < emplist.size(); j++){
+                if(n1.getLname().compareTo(n2.getLname()) > 0)
+                    swap(n0, n1, n2);
+                
+                if(j == 1)
+                    n0 = head;
+                else
+                    n0 = n0.getNext();
+                    n1 = n0.getNext();
+                    n2 = n1.getNext();
+                
+                    
+            } // end of inner for loop
+        } // end of outer for loop
+        }
+    
+    public void swap(EmployeeNode n0, EmployeeNode n1, EmployeeNode n2){
+        EmployeeNode n3;
+        
+        n3 = n2.getNext();
+        if(head == n1){
+            head = n2;
+            n2.setNext(n1);
+            n1.setNext(n3);
+            return;
+        }
+        
+        n0.setNext(n2);
+        n2.setNext(n1);
+        n1.setNext(n3);
+    }    
 }

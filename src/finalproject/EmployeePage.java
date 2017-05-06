@@ -3,6 +3,7 @@ package finalproject;
 import java.util.Enumeration;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.ButtonGroup;
+import static finalproject.FinalProject.emplist;
 import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -24,6 +25,7 @@ public class EmployeePage extends javax.swing.JFrame {
      */
     public EmployeePage() {
         initComponents();
+        emplist.sortEmpLname();
         showEmp();
     }
 
@@ -105,7 +107,7 @@ public class EmployeePage extends javax.swing.JFrame {
 
             },
             new String [] {
-                "EmployeeID", "First Name", "Last Name", "Gender", "Phone", "Email", "Hire Date", "End Date"
+                "EmployeeID", "Last Name", "First Name", "Gender", "Phone", "Email", "Hire Date", "End Date"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -502,7 +504,10 @@ public class EmployeePage extends javax.swing.JFrame {
            FinalProject.emplist.add(employeeID.getText(),ssn.getText(), fName.getText(), lName.getText(),
                                 getGender(bgGender), phoneNumber.getText(), email.getText(), hire, end);
            
-           model.addRow(new Object[] {employeeID.getText(), fName.getText(), lName.getText(), getGender(bgGender), phoneNumber.getText(), email.getText(), hire, end} );
+           model.setRowCount(0); // clears table
+           emplist.sortEmpLname(); // resorts table to alphabetical
+           showEmp(); // shows table based on new linked list
+          
            fName.setText("");
            lName.setText("");
            employeeID.setText("");
