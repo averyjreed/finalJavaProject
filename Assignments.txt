@@ -1,6 +1,6 @@
 Accounting	44449999	Frable	Fan	Level4	05/09/2017	NA
 Accounting	44443399	DEable	Fan	Level4	05/09/2017	NA
 Accounting	44442299	Dddble	Fan	Manager	05/09/2017	NA
+Janitorial	44440003	Fodo	Fnana	Level4	05/09/2017	05/16/2017
 Product	44440002	Newman	Phil	Level1	05/16/2017	NA
-Production	44440003	Fodo	Fnana	Level3	05/02/2017	NA
 Production	44442249	Bentley	Matt	Manager	05/09/2017	05/23/2017

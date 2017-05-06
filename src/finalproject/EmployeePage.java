@@ -464,12 +464,9 @@ public class EmployeePage extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel)etable.getModel();
         
         Date chosenHireDate = HireDate.getDate(); 
-        String hire = String.format("%1$tm/%1$td/%1$tY", chosenHireDate);
-       
         Date chosenEndDate = EndDate.getDate(); 
         String end = String.format("%1$tm/%1$td/%1$tY", chosenEndDate);
-        if(end.equals("null/null/null"))
-            end = "NA";
+        String hire = String.format("%1$tm/%1$td/%1$tY", chosenHireDate);
         
         if(!FinalProject.verifyAlpha1(fName.getText())){
             errorMsg.setText("Employee must have a valid First name");
@@ -490,33 +487,36 @@ public class EmployeePage extends javax.swing.JFrame {
         else if(!FinalProject.validatePhoneNumber(phoneNumber.getText())) {
             errorMsg.setText("Employee must have a valid phone number");
         }
-        else if(!FinalProject.validateEmail(email.getText())){
-            errorMsg.setText("Employee must have a valid email address");
-        }
-        else if(hire.equals("null/null/null")){
-            errorMsg.setText("No Hire Date was selected.");
-        }  
-        // verify dates goes here
+        else if(!FinalProject.validateEmail(email.getText()))
+            errorMsg.setText("Employee must have a valid email address"); 
+        else if(hire.equals("null/null/null"))
+                errorMsg.setText("No Hire Date was selected");
         else if(!bmale.isSelected() && !bfemale.isSelected()){
             errorMsg.setText("Please select either Male or Female");
         }
         else{
-           FinalProject.emplist.add(employeeID.getText(),ssn.getText(), fName.getText(), lName.getText(),
+            
+            if(!verifyDates(chosenHireDate, chosenEndDate))
+                errorMsg.setText("End Date cannot be before Hire Date");
+            else if(end.equals("null/null/null")){
+                end = "NA";   
+           
+            FinalProject.emplist.add(employeeID.getText(),ssn.getText(), fName.getText(), lName.getText(),
                                 getGender(bgGender), phoneNumber.getText(), email.getText(), hire, end);
            
-           model.setRowCount(0); // clears table
-           emplist.sortEmpLname(); // resorts table to alphabetical
-           showEmp(); // shows table based on new linked list
+            model.setRowCount(0); // clears table
+            emplist.sortEmpLname(); // resorts table to alphabetical
+            showEmp(); // shows table based on new linked list
           
-           fName.setText("");
-           lName.setText("");
-           employeeID.setText("");
-           phoneNumber.setText("");
-           email.setText("");
-           ssn.setText("");
-           HireDate.setDate(null);
-           EndDate.setDate(null);
-        
+            fName.setText("");
+            lName.setText("");
+            employeeID.setText("");
+            phoneNumber.setText("");
+            email.setText("");
+            ssn.setText("");
+            HireDate.setDate(null);
+            EndDate.setDate(null);
+            }
         }
                                              
     }//GEN-LAST:event_addbuttonActionPerformed
@@ -534,7 +534,7 @@ public class EmployeePage extends javax.swing.JFrame {
     }
     
     private boolean verifyDates(Date hr, Date lv) {
-        if(hr.compareTo(lv) < 0) 
+        if(hr.compareTo(lv) > 0 && hr.compareTo(lv) == 0) 
             return true;
         return false;
     }

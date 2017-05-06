@@ -374,7 +374,7 @@ public class AssignmentPage extends javax.swing.JFrame {
             
             model.setRowCount(0); // clears table
             asnlist.sortAsnDepName(); // sorts by department name
-            showAsn(); //repopulates table
+            CurrentAssignments(); //repopulates table
             
             depcb.setSelectedIndex(0);
             empcb.setSelectedIndex(0);
@@ -424,7 +424,8 @@ public class AssignmentPage extends javax.swing.JFrame {
                     eptr = eptr.getNext();
                 }
                 
-                model.setValueAt(end, atable.getSelectedRow(), 6);
+                
+                PastAssignments();
                 EndDate.setDate(null);
             }    
         }                 
