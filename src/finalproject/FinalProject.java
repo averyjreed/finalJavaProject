@@ -21,13 +21,19 @@ public class FinalProject {
     public static EmployeeLinkedList emplist;
     public static DepartmentLinkedList deplist;
     public static AssignmentLinkedList asnlist;
-    //payroll list goes here
+    //public static PayrollLinkedList paylist;
     private static Scanner input;
     
     public static void main(String[] args) {
          
         openEmployeeFile();
         readEmployeeFile();
+        //openAssignmentFile();
+        //readAssignmentFile();
+        //openDepartmentFile();
+        //readDepartmentFile();
+        //openPayrollFile();
+        //readPayrollFile();
 
         new HomePage().setVisible(true); 
         
@@ -37,6 +43,39 @@ public class FinalProject {
         
         try{
             input = new Scanner(Paths.get("Employees.txt"));
+        }
+        catch(IOException ioexception){
+            System.err.print("Error opening file. Terminating");
+            System.exit(1);
+        }
+    }
+    
+    public static void openAssignmentFile(){
+        
+        try{
+            input = new Scanner(Paths.get("Assignments.txt"));
+        }
+        catch(IOException ioexception){
+            System.err.print("Error opening file. Terminating");
+            System.exit(1);
+        }
+    }
+    
+    public static void openDepartmentFile(){
+        
+        try{
+            input = new Scanner(Paths.get("Departments.txt"));
+        }
+        catch(IOException ioexception){
+            System.err.print("Error opening file. Terminating");
+            System.exit(1);
+        }
+    }
+    
+    public static void openPayrollFile(){
+        
+        try{
+            input = new Scanner(Paths.get("Paygrade.txt"));
         }
         catch(IOException ioexception){
             System.err.print("Error opening file. Terminating");
@@ -64,10 +103,70 @@ public class FinalProject {
         input.close();
     } // end of read employee
     
+    private static void readAssignmentFile(){
+        asnlist = new AssignmentLinkedList();
+        
+        try{
+            while(input.hasNext()){
+                asnlist.add(input.next(), input.next(), input.next(), input.next(), input.next(), input.next(), input.next(), input.next(), input.next());
+            }
+        }
+        catch(NoSuchElementException elementException){
+            System.err.println("File improperly formed. Terminating.");
+            System.exit(1);
+        }
+        catch(IllegalStateException stateException){
+            System.err.println("Error reading from file. Terminating.");
+            System.exit(1);
+        }
+        
+        input.close();
+    } // end of read assignment
+    
+    private static void readDepartmentFile(){
+        deplist = new DepartmentLinkedList();
+        
+        try{
+            while(input.hasNext()){
+                deplist.add(input.next(), input.next(), input.next(), input.next(), input.next(), input.next(), input.next(), input.next(), input.next());
+            }
+        }
+        catch(NoSuchElementException elementException){
+            System.err.println("File improperly formed. Terminating.");
+            System.exit(1);
+        }
+        catch(IllegalStateException stateException){
+            System.err.println("Error reading from file. Terminating.");
+            System.exit(1);
+        }
+        
+        input.close();
+    } // end of read department
+    
+    private static void readPayrollFile(){
+        paylist = new PayrollLinkedList();
+        
+        try{
+            while(input.hasNext()){
+                paylist.add(input.next(), input.next(), input.next(), input.next(), input.next(), input.next(), input.next(), input.next(), input.next());
+            }
+        }
+        catch(NoSuchElementException elementException){
+            System.err.println("File improperly formed. Terminating.");
+            System.exit(1);
+        }
+        catch(IllegalStateException stateException){
+            System.err.println("Error reading from file. Terminating.");
+            System.exit(1);
+        }
+        
+        input.close();
+    } // end of read employee
+    
     public static void writeEmployeeFile(){
         
         try{
-            output = new Formatter("Employees.txt");
+            output = new Formatter("Assignments.txt");
         }
         catch(SecurityException securityException){
             System.err.print("Write permission denied. Terminating");

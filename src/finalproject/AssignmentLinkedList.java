@@ -58,7 +58,7 @@ public class AssignmentLinkedList {
         public Integer size(){
             
           Integer size = 0;
-          EmployeeNode current = head;
+          AssignmentNode current = head;
             
             while(current != null){
                 size++;
