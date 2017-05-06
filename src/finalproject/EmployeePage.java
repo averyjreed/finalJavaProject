@@ -433,6 +433,10 @@ public class EmployeePage extends javax.swing.JFrame {
 
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
         FinalProject.writeEmployeeFile();
+        //FinalProject.writeDepartmentFile();
+        //FinalProject.writeAssignmentFile();
+        //FinalProject.writeDepartmentFile();
+        //FinalProject.writePayrollFile();
         dispose();
     }//GEN-LAST:event_closeMouseClicked
 

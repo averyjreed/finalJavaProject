@@ -21,7 +21,7 @@ public class FinalProject {
     public static EmployeeLinkedList emplist;
     public static DepartmentLinkedList deplist;
     public static AssignmentLinkedList asnlist;
-    //public static PayrollLinkedList paylist;
+    public static PayrollLinkedList paylist;
     private static Scanner input;
     
     public static void main(String[] args) {
