@@ -108,7 +108,7 @@
                               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="EndDate" pref="178" max="32767" attributes="0"/>
-                                  <Component id="HireDate" pref="178" max="32767" attributes="0"/>
+                                  <Component id="BeginDate" pref="178" max="32767" attributes="0"/>
                                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                                       <Component id="jButton4" alignment="0" max="32767" attributes="0"/>
                                       <Component id="asnaddbutton" alignment="0" max="32767" attributes="0"/>
@@ -157,7 +157,7 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="HireDate" alignment="0" max="32767" attributes="0"/>
+                          <Component id="BeginDate" alignment="0" max="32767" attributes="0"/>
                           <Component id="jLabel6" alignment="0" min="-2" pref="29" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -284,7 +284,7 @@
         <Property name="text" type="java.lang.String" value="Begin Date:"/>
       </Properties>
     </Component>
-    <Component class="com.toedter.calendar.JDateChooser" name="HireDate">
+    <Component class="com.toedter.calendar.JDateChooser" name="BeginDate">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>
@@ -353,9 +353,13 @@
     <Component class="javax.swing.JComboBox" name="rankcb">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="2">
+          <StringArray count="6">
             <StringItem index="0" value="Select One"/>
-            <StringItem index="1" value=" "/>
+            <StringItem index="1" value="Level 1"/>
+            <StringItem index="2" value="Level 2"/>
+            <StringItem index="3" value="Level 3"/>
+            <StringItem index="4" value="Level 4"/>
+            <StringItem index="5" value="Level 5"/>
           </StringArray>
         </Property>
       </Properties>

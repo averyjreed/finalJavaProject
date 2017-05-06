@@ -39,7 +39,7 @@ public class AssignmentPage extends javax.swing.JFrame {
         atable = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        HireDate = new com.toedter.calendar.JDateChooser();
+        BeginDate = new com.toedter.calendar.JDateChooser();
         jLabel7 = new javax.swing.JLabel();
         EndDate = new com.toedter.calendar.JDateChooser();
         jLabel4 = new javax.swing.JLabel();
@@ -115,7 +115,7 @@ public class AssignmentPage extends javax.swing.JFrame {
 
         depcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select One" }));
 
-        rankcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select One", " " }));
+        rankcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select One", "Level 1", "Level 2", "Level 3", "Level 4", "Level 5" }));
 
         errormsg.setForeground(new java.awt.Color(255, 0, 0));
 
@@ -207,7 +207,7 @@ public class AssignmentPage extends javax.swing.JFrame {
                                 .addGap(24, 24, 24)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(EndDate, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
-                                    .addComponent(HireDate, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+                                    .addComponent(BeginDate, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(jButton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(asnaddbutton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -243,7 +243,7 @@ public class AssignmentPage extends javax.swing.JFrame {
                             .addComponent(rankcb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(HireDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(BeginDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -341,13 +341,16 @@ public class AssignmentPage extends javax.swing.JFrame {
         errormsg.setText("");
         DefaultTableModel model = (DefaultTableModel)atable.getModel();
         
-        FinalProject.asnlist.add(employeeID.getText(),ssn.getText(), fName.getText(), lName.getText(),
-                                getGender(bgGender), phoneNumber.getText(), email.getText(), hire, end);
+        Date chosenBeginDate = BeginDate.getDate(); 
+        String begin = String.format("%1$tm/%1$td/%1$tY", BeginDate);
+        
+        Date chosenEndDate = EndDate.getDate(); 
+        String aend = String.format("%1$tm/%1$td/%1$tY", EndDate);
+        
+        //FinalProject.asnlist.add(empcb.getSelectedItem().toString(), depcb.getSelectedItem().toString(), rankcb.getSelectedItem().toString(), begin, aend);
            
-           model.addRow(new Object[] {employeeID.getText(), fName.getText(), lName.getText(), getGender(bgGender), phoneNumber.getText(), email.getText(), hire, end} );
-           fName.setText("");
-           lName.setText("");
-           employeeID.setText("");
+           model.addRow(new Object[] {empcb.getSelectedItem().toString(), depcb.getSelectedItem().toString(), rankcb.getSelectedItem().toString(), begin, aend} );
+      
     }//GEN-LAST:event_asnaddbuttonActionPerformed
 
     /**
@@ -386,8 +389,8 @@ public class AssignmentPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser BeginDate;
     private com.toedter.calendar.JDateChooser EndDate;
-    private com.toedter.calendar.JDateChooser HireDate;
     private javax.swing.JButton asnaddbutton;
     private javax.swing.JMenu assignmentmenu;
     private javax.swing.JTable atable;

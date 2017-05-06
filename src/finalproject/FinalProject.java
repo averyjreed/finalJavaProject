@@ -148,7 +148,7 @@ public class FinalProject {
         
         try{
             while(input.hasNext()){
-                paylist.add(input.next(), input.next(), input.next(), input.next(), input.next(), input.next(), input.next(), input.next(), input.next());
+                paylist.add(input.next(), input.next());
             }
         }
         catch(NoSuchElementException elementException){
