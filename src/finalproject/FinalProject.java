@@ -30,8 +30,8 @@ public class FinalProject {
         readEmployeeFile();
         //openAssignmentFile();
         //readAssignmentFile();
-        //openDepartmentFile();
-        //readDepartmentFile();
+        openDepartmentFile();
+        readDepartmentFile();
         //openPayrollFile();
         //readPayrollFile();
 
@@ -128,7 +128,7 @@ public class FinalProject {
         
         try{
             while(input.hasNext()){
-                deplist.add(input.next(), input.next(), input.next(), input.next(), input.next(), input.next(), input.next(), input.next(), input.next());
+                deplist.add(input.next());
             }
         }
         catch(NoSuchElementException elementException){
@@ -216,7 +216,11 @@ public class FinalProject {
     
     public static boolean verifyempID(String employeeID){
         return employeeID.matches("\\d{8}");
-    } 
+    }
+    
+    public static boolean verifydepcap(String department){
+        return department.matches("[A-Z]*");
+    }
     
     public static boolean verifyAlpha2(String lName){
         return lName.matches("[A-Z][a-zA-Z]*");

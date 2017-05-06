@@ -40,6 +40,7 @@ public class DepartmentPage extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         department = new javax.swing.JTextField();
         daddbutton = new javax.swing.JButton();
+        errordep = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         homemenu = new javax.swing.JMenu();
         employeemenu = new javax.swing.JMenu();
@@ -81,6 +82,13 @@ public class DepartmentPage extends javax.swing.JFrame {
         department.setBackground(new java.awt.Color(191, 175, 107));
 
         daddbutton.setText("Add");
+        daddbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                daddbuttonActionPerformed(evt);
+            }
+        });
+
+        errordep.setForeground(new java.awt.Color(255, 51, 51));
 
         homemenu.setText("Home");
         homemenu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -158,8 +166,11 @@ public class DepartmentPage extends javax.swing.JFrame {
                             .addComponent(department)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(81, 81, 81)
-                        .addComponent(daddbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(577, Short.MAX_VALUE))
+                        .addComponent(daddbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(254, 254, 254)
+                        .addComponent(errordep, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(162, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(254, 254, 254)
@@ -177,7 +188,9 @@ public class DepartmentPage extends javax.swing.JFrame {
                 .addComponent(department, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(daddbutton)
-                .addContainerGap(402, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 362, Short.MAX_VALUE)
+                .addComponent(errordep, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(54, 54, 54)
@@ -234,6 +247,20 @@ public class DepartmentPage extends javax.swing.JFrame {
 
     }//GEN-LAST:event_closeActionPerformed
 
+    private void daddbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_daddbuttonActionPerformed
+        errordep.setText("");
+        DefaultTableModel model = (DefaultTableModel)dtable.getModel();
+        
+        if(!FinalProject.verifydepcap(department.getText()))
+            errordep.setText("Must use all caps for Department Name");
+        else{
+           FinalProject.deplist.add(department.getText());
+           
+           model.addRow(new Object[] {department.getText(), department.getText(), department.getText()} );
+           department.setText("");
+        }
+    }//GEN-LAST:event_daddbuttonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -277,6 +304,7 @@ public class DepartmentPage extends javax.swing.JFrame {
     private javax.swing.JMenu departmentmenu;
     private javax.swing.JTable dtable;
     private javax.swing.JMenu employeemenu;
+    private javax.swing.JLabel errordep;
     private javax.swing.JMenu homemenu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

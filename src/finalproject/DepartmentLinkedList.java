@@ -26,7 +26,7 @@ public class DepartmentLinkedList {
 	// set method to linked list "head" node
     public void setHead(DepartmentNode head) 
 	{
-            this.head= head;
+            this.head = head;
     }
     
 	// method to check if the linked list is empty
@@ -38,22 +38,20 @@ public class DepartmentLinkedList {
                 return false;}
 
     }
-    /* USE INFO form Department Instead
-	// method to add data to the linked list
-         public void add(String fName, String lName, String employeeID, String gender, String ssn,
-                        String phoneNumber, String email, String HireDate, String EndDate){ 
+   
+    public void add(String dname){ 
             if(isEmpty()){
-                head = new EmployeeNode(fName, lName, employeeID, gender, ssn, phoneNumber, email, HireDate, EndDate);
+                head = new DepartmentNode(dname);
             }
             else{
-              EmployeeNode current = head;
+              DepartmentNode current = head;
               while(current.getNext() !=null){
                   current = current.getNext();
               }
-              current.setNext(new EmployeeNode(fName, lName, employeeID, gender, ssn, phoneNumber, email, HireDate, EndDate) );
+              current.setNext(new DepartmentNode(dname) );
             }
         }
-         */
+        
         public Integer size(){
             
           Integer size = 0;
