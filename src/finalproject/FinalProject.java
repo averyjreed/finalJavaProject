@@ -250,4 +250,42 @@ public class FinalProject {
            return email.matches("\\S*[@]\\S*[.][a-zA-Z][a-zA-Z][a-zA-Z]");
     }
     
+    private void empidtoname(){
+    
+        if(empcb.getSelectedItem().toString().compareTo())
+    EmployeeNode eptr = FinalProject.emplist.getHead();
+    for(int i = 0; i < FinalProject.emplist.size(); i++){
+    
+    eptr.getLname(), eptr.getFname();
+    model.addRow(newRowData);
+    }
+    eptr = eptr.getNext();
+    
+    }
+    
+    /*public void sortAlphaR(){
+        WindNode n0, n1, n2;
+        
+        for(int i = 1; i < size(); i++){
+            
+            n0 = head;
+            n1 = head;
+            n2 = n1.getNext();
+            
+            for(int j = 1; j < size(); j++){
+                if(n1.getCounty().compareTo(n2.getCounty())< 0)
+                    swap(n0, n1, n2);
+                
+                if(j == 1)
+                    n0 = head;
+                else
+                    n0 = n0.getNext();
+                    n1 = n0.getNext();
+                    n2 = n1.getNext();
+                
+                    
+            } // end of inner for loop
+        } // end of outer for loop
+    }*/
+    
 }

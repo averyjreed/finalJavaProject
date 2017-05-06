@@ -85,7 +85,7 @@ public class AssignmentPage extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        atable.setGridColor(new java.awt.Color(191, 175, 107));
+        atable.setGridColor(new java.awt.Color(153, 153, 0));
         jScrollPane1.setViewportView(atable);
 
         jLabel3.setText("EmployeeID:");
@@ -115,7 +115,7 @@ public class AssignmentPage extends javax.swing.JFrame {
 
         depcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select One" }));
 
-        rankcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select One", "Level 1", "Level 2", "Level 3", "Level 4", "Level 5" }));
+        rankcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select One", "Level 1", "Level 2", "Level 3", "Level 4", "Level 5", "Manager" }));
 
         errormsg.setForeground(new java.awt.Color(255, 0, 0));
 
@@ -342,14 +342,14 @@ public class AssignmentPage extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel)atable.getModel();
         
         Date chosenBeginDate = BeginDate.getDate(); 
-        String begin = String.format("%1$tm/%1$td/%1$tY", BeginDate);
+        String begin = String.format("%1$tm/%1$td/%1$tY", chosenBeginDate);
         
         Date chosenEndDate = EndDate.getDate(); 
-        String aend = String.format("%1$tm/%1$td/%1$tY", EndDate);
+        String aend = String.format("%1$tm/%1$td/%1$tY", chosenEndDate);
         
         //FinalProject.asnlist.add(empcb.getSelectedItem().toString(), depcb.getSelectedItem().toString(), rankcb.getSelectedItem().toString(), begin, aend);
            
-           model.addRow(new Object[] {empcb.getSelectedItem().toString(), depcb.getSelectedItem().toString(), rankcb.getSelectedItem().toString(), begin, aend} );
+        model.addRow(new Object[] {empcb.getSelectedItem().toString(), depcb.getSelectedItem().toString(), rankcb.getSelectedItem().toString(), begin, aend} );
       
     }//GEN-LAST:event_asnaddbuttonActionPerformed
 

@@ -251,7 +251,9 @@ public class DepartmentPage extends javax.swing.JFrame {
         errordep.setText("");
         DefaultTableModel model = (DefaultTableModel)dtable.getModel();
         
-        if(!FinalProject.verifydepcap(department.getText()))
+        if(department.getText().trim().equals(""))
+            errordep.setText("Please enter a Department Name");
+        else if(!FinalProject.verifydepcap(department.getText()))
             errordep.setText("Must use all caps for Department Name");
         else{
            FinalProject.deplist.add(department.getText());
