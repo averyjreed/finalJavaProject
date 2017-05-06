@@ -482,11 +482,11 @@ public class EmployeePage extends javax.swing.JFrame {
         }
         else if(SameSsn(ssn.getText()))
             errorMsg.setText("Must use unique Social Security Number");
-        else if(SameEmpId(employeeID.getText()))
-            errorMsg.setText("Must use unique EmployeeID");
         else if(!FinalProject.verifyempID(employeeID.getText())) {
             errorMsg.setText("Employee must have a valid employee number with 8 digits, no spaces");
         }
+        else if(SameEmpId(employeeID.getText()))
+            errorMsg.setText("Must use unique EmployeeID");
         else if(!FinalProject.validatePhoneNumber(phoneNumber.getText())) {
             errorMsg.setText("Employee must have a valid phone number");
         }
@@ -528,6 +528,7 @@ public class EmployeePage extends javax.swing.JFrame {
            
                 Object[] originalFiles = {eptr.getEmployeeID(), eptr.getLname(), eptr.getFname(), eptr.getGender(), eptr.getPhoneNumber(), eptr.getEmail(), eptr.getHireDate(), eptr.getEndDate()};
                 model.addRow(originalFiles);
+                
                 eptr = eptr.getNext();
             }
     }
@@ -591,10 +592,21 @@ public class EmployeePage extends javax.swing.JFrame {
         else{
             if(end.equals("null/null/null"))
                 errorMsg.setText("No End Date was chosen");
-            else
+            else{
+                
+                EmployeeNode eptr = FinalProject.emplist.getHead();
+                for(int i = 0; i < FinalProject.emplist.size(); i++){
+                    
+                    if(etable.getSelectedRow() == i)
+                        eptr.setEndDate(end);
+                    
+                    eptr = eptr.getNext();
+                }
+                
                 model.setValueAt(end, etable.getSelectedRow(), 7);
                 EndDate.setDate(null);
-        }
+            }    
+        }       
     }//GEN-LAST:event_updatebuttonActionPerformed
 
     private void currentbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_currentbuttonActionPerformed

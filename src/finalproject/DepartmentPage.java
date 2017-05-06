@@ -44,7 +44,6 @@ public class DepartmentPage extends javax.swing.JFrame {
         department = new javax.swing.JTextField();
         daddbutton = new javax.swing.JButton();
         errordep = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         homemenu = new javax.swing.JMenu();
         employeemenu = new javax.swing.JMenu();
@@ -94,8 +93,6 @@ public class DepartmentPage extends javax.swing.JFrame {
         });
 
         errordep.setForeground(new java.awt.Color(255, 51, 51));
-
-        jLabel3.setText("(Must be in all caps)");
 
         homemenu.setText("Home");
         homemenu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -167,17 +164,16 @@ public class DepartmentPage extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addComponent(daddbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(254, 254, 254)
                         .addComponent(errordep, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(58, 58, 58)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(department)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(department)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(79, 79, 79)
+                        .addComponent(daddbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(162, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -192,13 +188,11 @@ public class DepartmentPage extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
-                .addGap(19, 19, 19)
+                .addGap(18, 18, 18)
                 .addComponent(department, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(daddbutton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 333, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 362, Short.MAX_VALUE)
                 .addComponent(errordep, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -262,8 +256,8 @@ public class DepartmentPage extends javax.swing.JFrame {
         
         if(department.getText().trim().equals(""))
             errordep.setText("Please enter a Department Name");
-        else if(!FinalProject.verifydepcap(department.getText()))
-            errordep.setText("Must use all caps for Department Name");
+        //else if(!FinalProject.verifydepcap(department.getText()))
+            //errordep.setText("Must use all caps for Department Name");
         else if(SameDep(department.getText()))
             errordep.setText("Must use unique Department Name");
         else{
@@ -272,21 +266,43 @@ public class DepartmentPage extends javax.swing.JFrame {
            model.setRowCount(0); // clears table
            deplist.sortDepName();
            showDep();
+           
            department.setText("");
         }
     }//GEN-LAST:event_daddbuttonActionPerformed
 
     public void showDep(){
-    DefaultTableModel model = (DefaultTableModel) dtable.getModel();
-        DepartmentNode dptr = FinalProject.deplist.getHead(); 
+        DefaultTableModel model = (DefaultTableModel) dtable.getModel();
+        DepartmentNode dptr = FinalProject.deplist.getHead();
+        
+        //AssignmentNode aptr = FinalProject.asnlist.getHead(); 
+        //EmployeeNode eptr = FinalProject.emplist.getHead(); 
+        
+        //int numemployees = 0;
+        //String manager = new String();
+        
             for (int i = 0; i < FinalProject.deplist.size(); i++) {
-           
-                Object[] originalFiles = {dptr.getDname()};
+                
+                /*for (int j = 0; j < FinalProject.asnlist.size(); j++) { 
+                   
+                    if(dptr.getDname().compareTo(aptr.getDname()) == 0)
+                        numemployees++;
+                    if(aptr.getRank().equals("Manager"))
+                        manager = aptr.getfName();
+                    
+                */
+
+                Object[] originalFiles = {dptr.getDname(), dptr.getDname(), dptr.getDname()};
                 model.addRow(originalFiles);
-                dptr = dptr.getNext();
-            }
+                
+                //aptr = aptr.getNext();
+                //}
+                
+            dptr = dptr.getNext();        
+            } // end of department for loop
+            
     }
-    
+   
     public boolean SameDep(String depname){
     
     DepartmentNode dptr = FinalProject.deplist.getHead();
@@ -346,7 +362,6 @@ public class DepartmentPage extends javax.swing.JFrame {
     private javax.swing.JMenu homemenu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenu payrollmenu;
