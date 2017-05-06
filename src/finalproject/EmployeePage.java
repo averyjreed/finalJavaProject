@@ -523,6 +523,7 @@ public class EmployeePage extends javax.swing.JFrame {
         //THIS IS NOT DONE. input needed is empid and end date?
         // verify valid empid and end date is present?
         // end must be after hire
+        // needs to change linked list as welll
         
         errorMsg.setText("");
         
@@ -538,9 +539,10 @@ public class EmployeePage extends javax.swing.JFrame {
         }    
         else{
             if(end.equals("null/null/null"))
-                errorMsg.setText("End Date must not be empty to update it");
+                errorMsg.setText("No End Date was chosen");
             else
                 model.setValueAt(end, etable.getSelectedRow(), 7);
+                EndDate.setDate(null);
         }
     }//GEN-LAST:event_updatebuttonActionPerformed
 
