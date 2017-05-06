@@ -531,7 +531,7 @@ public class EmployeePage extends javax.swing.JFrame {
         }    
         else{
             if(end.equals("null/null/null"))
-                errorMsg.setText("End Date must be empty to update it");
+                errorMsg.setText("End Date must not be empty to update it");
             else
                 model.setValueAt(end, etable.getSelectedRow(), 7);
         }
