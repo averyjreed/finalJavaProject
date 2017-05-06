@@ -28,8 +28,8 @@ public class FinalProject {
          
         openEmployeeFile();
         readEmployeeFile();
-        //openAssignmentFile();
-        //readAssignmentFile();
+        openAssignmentFile();
+        readAssignmentFile();
         openDepartmentFile();
         readDepartmentFile();
         //openPayrollFile();
@@ -108,7 +108,7 @@ public class FinalProject {
         
         try{
             while(input.hasNext()){
-                asnlist.add(input.next(), input.next(), input.next(), input.next(), input.next(), input.next(), input.next(), input.next(), input.next());
+                asnlist.add(input.next(), input.next(), input.next(), input.next(), input.next(), input.next(), input.next());
             }
         }
         catch(NoSuchElementException elementException){
@@ -166,7 +166,7 @@ public class FinalProject {
     public static void writeEmployeeFile(){
         
         try{
-            output = new Formatter("Assignments.txt");
+            output = new Formatter("Employee.txt");
         }
         catch(SecurityException securityException){
             System.err.print("Write permission denied. Terminating");

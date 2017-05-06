@@ -46,8 +46,12 @@ public class AssignmentPage extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        asnaddbutton = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        empcb = new javax.swing.JComboBox<>();
+        depcb = new javax.swing.JComboBox<>();
+        rankcb = new javax.swing.JComboBox<>();
+        errormsg = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         homemenu = new javax.swing.JMenu();
         employeemenu = new javax.swing.JMenu();
@@ -81,11 +85,12 @@ public class AssignmentPage extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        atable.setGridColor(new java.awt.Color(191, 175, 107));
         jScrollPane1.setViewportView(atable);
 
         jLabel3.setText("EmployeeID:");
 
-        jLabel6.setText("Hire Date:");
+        jLabel6.setText("Begin Date:");
 
         jLabel7.setText("End Date:");
 
@@ -97,9 +102,22 @@ public class AssignmentPage extends javax.swing.JFrame {
 
         jButton2.setText("Update");
 
-        jButton3.setText("Add");
+        asnaddbutton.setText("Add");
+        asnaddbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                asnaddbuttonActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Past");
+
+        empcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select One" }));
+
+        depcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select One" }));
+
+        rankcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select One", " " }));
+
+        errormsg.setForeground(new java.awt.Color(255, 0, 0));
 
         homemenu.setText("Home");
         homemenu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -172,10 +190,16 @@ public class AssignmentPage extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel6)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(empcb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(depcb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -186,11 +210,16 @@ public class AssignmentPage extends javax.swing.JFrame {
                                     .addComponent(HireDate, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(jButton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(asnaddbutton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)))))))
+                                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(rankcb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 731, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(errormsg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 731, Short.MAX_VALUE))
                 .addContainerGap(128, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -201,11 +230,17 @@ public class AssignmentPage extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel3)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(empcb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel4)
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel5)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(depcb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(21, 21, 21)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(rankcb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(HireDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -215,7 +250,7 @@ public class AssignmentPage extends javax.swing.JFrame {
                             .addComponent(EndDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(41, 41, 41)
-                        .addComponent(jButton3)
+                        .addComponent(asnaddbutton)
                         .addGap(18, 18, 18)
                         .addComponent(jButton2)
                         .addGap(18, 18, 18)
@@ -225,7 +260,9 @@ public class AssignmentPage extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(errormsg, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                .addGap(12, 12, 12))
         );
 
         pack();
@@ -300,6 +337,19 @@ public class AssignmentPage extends javax.swing.JFrame {
 
     }//GEN-LAST:event_closeActionPerformed
 
+    private void asnaddbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asnaddbuttonActionPerformed
+        errormsg.setText("");
+        DefaultTableModel model = (DefaultTableModel)atable.getModel();
+        
+        FinalProject.asnlist.add(employeeID.getText(),ssn.getText(), fName.getText(), lName.getText(),
+                                getGender(bgGender), phoneNumber.getText(), email.getText(), hire, end);
+           
+           model.addRow(new Object[] {employeeID.getText(), fName.getText(), lName.getText(), getGender(bgGender), phoneNumber.getText(), email.getText(), hire, end} );
+           fName.setText("");
+           lName.setText("");
+           employeeID.setText("");
+    }//GEN-LAST:event_asnaddbuttonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -338,15 +388,18 @@ public class AssignmentPage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser EndDate;
     private com.toedter.calendar.JDateChooser HireDate;
+    private javax.swing.JButton asnaddbutton;
     private javax.swing.JMenu assignmentmenu;
     private javax.swing.JTable atable;
     private javax.swing.JMenu close;
     private javax.swing.JMenu departmentmenu;
+    private javax.swing.JComboBox<String> depcb;
+    private javax.swing.JComboBox<String> empcb;
     private javax.swing.JMenu employeemenu;
+    private javax.swing.JLabel errormsg;
     private javax.swing.JMenu homemenu;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
@@ -357,5 +410,6 @@ public class AssignmentPage extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenu payrollmenu;
+    private javax.swing.JComboBox<String> rankcb;
     // End of variables declaration//GEN-END:variables
 }

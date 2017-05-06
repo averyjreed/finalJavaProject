@@ -39,22 +39,20 @@ public class AssignmentLinkedList {
                 return false;}
 
     }
-    /* USE INFO form Assignment Instead
-	// method to add data to the linked list
-         public void add(String fName, String lName, String employeeID, String gender, String ssn,
-                        String phoneNumber, String email, String HireDate, String EndDate){ 
+    
+    public void add(String dname, String employeeID, String lName, String fName, String rank, String bdate, String edate){ 
             if(isEmpty()){
-                head = new EmployeeNode(fName, lName, employeeID, gender, ssn, phoneNumber, email, HireDate, EndDate);
+                head = new AssignmentNode(dname, employeeID, lName, fName, rank, bdate, edate);
             }
             else{
-              EmployeeNode current = head;
+              AssignmentNode current = head;
               while(current.getNext() !=null){
                   current = current.getNext();
               }
-              current.setNext(new EmployeeNode(fName, lName, employeeID, gender, ssn, phoneNumber, email, HireDate, EndDate) );
+              current.setNext(new AssignmentNode(dname, employeeID, lName, fName, rank, bdate, edate) );
             }
         }
-         */
+        
         public Integer size(){
             
           Integer size = 0;

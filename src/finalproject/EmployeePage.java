@@ -538,7 +538,7 @@ public class EmployeePage extends javax.swing.JFrame {
         //THIS IS NOT DONE. input needed is empid and end date?
         // verify valid empid and end date is present?
         // end must be after hire
-        // needs to change linked list as welll
+        // needs to change linked list as well
         
         errorMsg.setText("");
         
