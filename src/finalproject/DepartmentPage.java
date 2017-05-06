@@ -58,6 +58,7 @@ public class DepartmentPage extends javax.swing.JFrame {
         jLabel1.setText("Reed-Bentley Construction Departments");
         jLabel1.setPreferredSize(new java.awt.Dimension(600, 600));
 
+        dtable.setBackground(new java.awt.Color(217, 204, 144));
         dtable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

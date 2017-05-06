@@ -107,6 +107,7 @@ public class EmployeePage extends javax.swing.JFrame {
 
         jLabel8.setText("Gender:");
 
+        etable.setBackground(new java.awt.Color(217, 204, 144));
         etable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

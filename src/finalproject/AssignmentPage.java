@@ -70,7 +70,7 @@ public class AssignmentPage extends javax.swing.JFrame {
         jLabel1.setText("Reed-Bentley Construction Assignments");
         jLabel1.setPreferredSize(new java.awt.Dimension(600, 600));
 
-        atable.setBackground(new java.awt.Color(204, 204, 204));
+        atable.setBackground(new java.awt.Color(217, 204, 144));
         atable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -201,7 +201,7 @@ public class AssignmentPage extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(depcb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(depcb, 0, 172, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
