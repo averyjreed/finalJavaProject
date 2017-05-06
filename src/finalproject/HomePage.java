@@ -52,7 +52,7 @@ public class HomePage extends javax.swing.JFrame {
         jTextArea1.setColumns(20);
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
-        jTextArea1.setText("  Clients - We strive to exceed client expectations \n  through the quality of our workmanship, our \n  attentive project coordination, and our clear \n  communication throughout every stage of the \n  project.\n\n  Employees - Our firm values its employees and \n  encourages them to be their very best. We offer \n  numerous training opportunities and maintain a         top\n  safety program to ensure their well-being .\n\n  Excellence - We strive to achieve excellence in all \n  aspects of serving our company and clients.\n\n  Profitable Growth - Business growth provides \n  additional opportunities for our firm, allowing us to   invest resources back into the community.\n\n  Social Responsibility - We give back to the \n  community through philanthropic                               events,donations, and volunteering. We are                conscious of our short and long-term impact on        the environment.\n\n  Innovation - We encourage creative problem              solving and work to improve on our best practices,    which leads to better quality and efficiency.");
+        jTextArea1.setText("  Clients - We strive to exceed client expectations \n  through the quality of our workmanship, our \n  attentive project coordination, and our clear \n  communication throughout every stage of the \n  project.\n\n  Employees - Our firm values its employees and \n  encourages them to be their very best. We offer \n  numerous training opportunities and maintain a     top safety program to ensure their well-being .\n\n  Excellence - We strive to achieve excellence in all   aspects of serving our company and clients.\n\n  Profitable Growth - Business growth provides \n  additional opportunities for our firm, allowing us    to invest resources back into the community.\n\n  Social Responsibility - We give back to the \n  community through philanthropic events,               donations, and volunteering. We are conscious of   our short and long-term impact on the                    environment.\n\n  Innovation - We encourage creative problem           solving and work to improve on our best                 practices, which leads to better quality and             efficiency.");
         jTextArea1.setWrapStyleWord(true);
         jScrollPane1.setViewportView(jTextArea1);
 
@@ -170,9 +170,7 @@ public class HomePage extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel3)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jLabel2)))
