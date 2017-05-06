@@ -207,13 +207,8 @@ public class FinalProject {
     }
  
     public static boolean verifySSN (String ssn){
-    if (ssn.matches("\\d{3}-\\d{2}-\\d{4}"))
         return ssn.matches("\\d{3}-\\d{2}-\\d{4}");
-    else if (ssn.matches("\\d{3} \\d{2} \\d{4}"))
-        return ssn.matches("\\d{3} \\d{2} \\d{4}");
-    else
-        return ssn.matches("\\d{9}");
-     }
+    }
     
     public static boolean validatePhoneNumber (String phoneNumber){
     if (phoneNumber.matches("[1-9]\\d{2}-[1-9]\\d{2}-\\d{4}"))

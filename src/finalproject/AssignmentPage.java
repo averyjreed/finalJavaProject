@@ -24,6 +24,7 @@ public class AssignmentPage extends javax.swing.JFrame {
     public AssignmentPage() {
         initComponents();
         getDepText();
+        getEID();
     }
 
     /**
@@ -366,6 +367,18 @@ public class AssignmentPage extends javax.swing.JFrame {
         for(int i = 0; i < FinalProject.deplist.size(); i++){
             depcb.addItem(dptr.getDname());
             dptr = dptr.getNext();
+        }
+    }
+    
+    private void getEID(){ // needs to check for no assignment
+        EmployeeNode eptr = FinalProject.emplist.getHead();
+        
+        empcb.removeAllItems();
+        empcb.addItem("Select One");
+        
+        for(int i = 0; i < FinalProject.emplist.size(); i++){
+            empcb.addItem(eptr.getEmployeeID());
+            eptr = eptr.getNext();
         }
     }
     

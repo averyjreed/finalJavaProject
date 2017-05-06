@@ -484,10 +484,14 @@ public class EmployeePage extends javax.swing.JFrame {
             errorMsg.setText("Employee must hava a valid Last name");
         }
         else if (!FinalProject.verifySSN(ssn.getText())){
-            errorMsg.setText("Employee must have a valid Social Security Number");
+            errorMsg.setText("Employee must have a valid Social Security Number, formatted XXX-XX-XXXX");
         }
+        else if(SameSsn(ssn.getText()))
+            errorMsg.setText("Must use unique Social Security Number");
+        else if(SameEmpId(employeeID.getText()))
+            errorMsg.setText("Must use unique EmployeeID");
         else if(!FinalProject.verifyempID(employeeID.getText())) {
-            errorMsg.setText("Employee must have a valid employee number");
+            errorMsg.setText("Employee must have a valid employee number with 8 digits, no spaces");
         }
         else if(!FinalProject.validatePhoneNumber(phoneNumber.getText())) {
             errorMsg.setText("Employee must have a valid phone number");
@@ -523,6 +527,30 @@ public class EmployeePage extends javax.swing.JFrame {
     private boolean verifyDates(Date hr, Date lv) {
         if(hr.compareTo(lv) < 0) 
             return true;
+        return false;
+    }
+    
+    public boolean SameEmpId(String empid){
+     
+    EmployeeNode eptr = FinalProject.emplist.getHead();
+        for(int i = 0; i < FinalProject.emplist.size(); i++){
+    
+            if(empid.compareTo(eptr.getEmployeeID()) == 0)
+                return true;
+            eptr = eptr.getNext();
+        }
+        return false;
+    }
+    
+    public boolean SameSsn(String ssn){
+     
+    EmployeeNode eptr = FinalProject.emplist.getHead();
+        for(int i = 0; i < FinalProject.emplist.size(); i++){
+    
+            if(ssn.compareTo(eptr.getSsn()) == 0)
+                return true;
+            eptr = eptr.getNext();
+        }
         return false;
     }
     
