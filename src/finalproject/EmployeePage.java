@@ -24,15 +24,7 @@ public class EmployeePage extends javax.swing.JFrame {
      */
     public EmployeePage() {
         initComponents();
-        
-        DefaultTableModel model = (DefaultTableModel) etable.getModel();
-        EmployeeNode eptr = FinalProject.emplist.getHead(); 
-            for (int i = 0; i < FinalProject.emplist.size(); i++) {
-           
-                Object[] originalFiles = {eptr.getEmployeeID(), eptr.getLname(), eptr.getFname(), eptr.getGender(), eptr.getPhoneNumber(), eptr.getEmail(), eptr.getHireDate(), eptr.getEndDate()};
-                model.addRow(originalFiles);
-                eptr = eptr.getNext();
-            }
+        showEmp();
     }
 
     /**
@@ -446,8 +438,7 @@ public class EmployeePage extends javax.swing.JFrame {
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
         FinalProject.writeEmployeeFile();
         //FinalProject.writeDepartmentFile();
-        //FinalProject.writeAssignmentFile();
-        //FinalProject.writeDepartmentFile();
+        FinalProject.writeAssignmentFile();
         //FinalProject.writePayrollFile();
         dispose();
     }//GEN-LAST:event_closeMouseClicked
@@ -524,6 +515,17 @@ public class EmployeePage extends javax.swing.JFrame {
         }
                                              
     }//GEN-LAST:event_addbuttonActionPerformed
+    
+    public void showEmp(){
+    DefaultTableModel model = (DefaultTableModel) etable.getModel();
+        EmployeeNode eptr = FinalProject.emplist.getHead(); 
+            for (int i = 0; i < FinalProject.emplist.size(); i++) {
+           
+                Object[] originalFiles = {eptr.getEmployeeID(), eptr.getLname(), eptr.getFname(), eptr.getGender(), eptr.getPhoneNumber(), eptr.getEmail(), eptr.getHireDate(), eptr.getEndDate()};
+                model.addRow(originalFiles);
+                eptr = eptr.getNext();
+            }
+    }
     
     private boolean verifyDates(Date hr, Date lv) {
         if(hr.compareTo(lv) < 0) 

@@ -23,6 +23,7 @@ public class AssignmentPage extends javax.swing.JFrame {
      */
     public AssignmentPage() {
         initComponents();
+        showAsn();
         getDepText();
         getEID();
     }
@@ -117,7 +118,7 @@ public class AssignmentPage extends javax.swing.JFrame {
 
         depcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select One" }));
 
-        rankcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select One", "Level 1", "Level 2", "Level 3", "Level 4", "Level 5", "Manager" }));
+        rankcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select One", "Level1", "Level2", "Level3", "Level4", "Level5", "Manager" }));
 
         errormsg.setForeground(new java.awt.Color(255, 0, 0));
 
@@ -191,7 +192,7 @@ public class AssignmentPage extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
+                        .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel6)
                             .addGroup(layout.createSequentialGroup()
@@ -201,24 +202,23 @@ public class AssignmentPage extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(depcb, 0, 172, Short.MAX_VALUE))
+                                .addComponent(depcb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel5))
-                                .addGap(24, 24, 24)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jButton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(asnaddbutton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(BeginDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
-                                            .addComponent(rankcb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(EndDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))))
+                                .addGap(30, 30, 30)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(BeginDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(rankcb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(EndDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(110, 110, 110)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jButton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(asnaddbutton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(errormsg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -252,7 +252,7 @@ public class AssignmentPage extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(EndDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(41, 41, 41)
+                        .addGap(43, 43, 43)
                         .addComponent(asnaddbutton)
                         .addGap(18, 18, 18)
                         .addComponent(jButton2)
@@ -318,8 +318,7 @@ public class AssignmentPage extends javax.swing.JFrame {
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
         FinalProject.writeEmployeeFile();
         //FinalProject.writeDepartmentFile();
-        //FinalProject.writeAssignmentFile();
-        //FinalProject.writeDepartmentFile();
+        FinalProject.writeAssignmentFile();
         //FinalProject.writePayrollFile();
         dispose();
     }//GEN-LAST:event_closeMouseClicked
@@ -355,9 +354,22 @@ public class AssignmentPage extends javax.swing.JFrame {
             depcb.setSelectedIndex(0);
             empcb.setSelectedIndex(0);
             rankcb.setSelectedIndex(0);
+            BeginDate.setDate(null);
+            EndDate.setDate(null);
         }
     }//GEN-LAST:event_asnaddbuttonActionPerformed
 
+    public void showAsn(){
+    DefaultTableModel model = (DefaultTableModel) atable.getModel();
+        AssignmentNode aptr = FinalProject.asnlist.getHead(); 
+            for (int i = 0; i < FinalProject.asnlist.size(); i++) {
+           
+                Object[] originalFiles = {aptr.getDname(), aptr.getEmployeeID(), aptr.getLname(), aptr.getfName(), aptr.getRank(), aptr.getBdate(), aptr.getEdate()};
+                model.addRow(originalFiles);
+                aptr = aptr.getNext();
+            }
+    }
+    
     private void getDepText(){
         DepartmentNode dptr = FinalProject.deplist.getHead();
         

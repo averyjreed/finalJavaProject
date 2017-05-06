@@ -65,11 +65,6 @@ public class AssignmentNode {
             return fName;
 	}
 
-	public void setGender(String fName)
-	{
-            this.fName = fName;
-	}
-        
         public String getRank()
         {
             return rank;

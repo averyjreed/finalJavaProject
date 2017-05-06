@@ -175,6 +175,39 @@ public class FinalProject {
         closeEmployeeFile();
     } // end of write employee
     
+    public static void writeAssignmentFile(){
+        
+        try{
+            output = new Formatter("Assignments.txt");
+        }
+        catch(SecurityException securityException){
+            System.err.print("Write permission denied. Terminating");
+            System.exit(1);
+        }
+        catch(FileNotFoundException fileException){
+            System.err.print("Error opening file. Terminating");
+            System.exit(1);
+        }
+        
+        AssignmentNode aptr = FinalProject.asnlist.getHead();
+        for(int i = 0; i < asnlist.size(); i++){
+            try{
+                output.format("%s\t%s\t%s\t%s\t%s\t%s\t%s%n", aptr.getDname(), aptr.getEmployeeID(), aptr.getLname(), aptr.getfName(), 
+                        aptr.getRank(), aptr.getBdate(), aptr.getEdate());
+                
+                aptr = aptr.getNext();
+            }
+            catch(FormatterClosedException formatterClosedException){
+                System.err.println("Error writing to Employees file. Terminating.");
+                break;
+            }
+            
+        }
+        
+        closeAssignmentFile();
+    } // end of write employee
+    
+    
     public static void closeEmployeeFile(){
         if(output != null)
             output.close();
