@@ -123,6 +123,7 @@ public class EmployeePage extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        etable.setGridColor(new java.awt.Color(153, 153, 0));
         jScrollPane1.setViewportView(etable);
 
         bgGender.add(bmale);
@@ -151,17 +152,27 @@ public class EmployeePage extends javax.swing.JFrame {
         errorMsg.setForeground(new java.awt.Color(255, 0, 51));
         errorMsg.setSize(new java.awt.Dimension(100, 100));
 
+        fName.setBackground(new java.awt.Color(191, 175, 107));
         fName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fNameActionPerformed(evt);
             }
         });
 
+        lName.setBackground(new java.awt.Color(191, 175, 107));
         lName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lNameActionPerformed(evt);
             }
         });
+
+        ssn.setBackground(new java.awt.Color(191, 175, 107));
+
+        employeeID.setBackground(new java.awt.Color(191, 175, 107));
+
+        phoneNumber.setBackground(new java.awt.Color(191, 175, 107));
+
+        email.setBackground(new java.awt.Color(191, 175, 107));
 
         updatebutton.setText("Update");
         updatebutton.addActionListener(new java.awt.event.ActionListener() {
