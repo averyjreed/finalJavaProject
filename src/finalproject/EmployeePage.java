@@ -396,20 +396,7 @@ public class EmployeePage extends javax.swing.JFrame {
             }
         }
         return ""; //returns an empty string, if no radio button is selected
-    }
-    
-        
-    /*String hireDateString = eptr.getHiredate();
-    DateFormat df = new SimpleDateFormat("MM/dd/yyyy"); 
-    Date hireDate; 
-    
-    try{ 
-        hireDate = (Date)df.parse(hireDateString);} 
-    
-    catch(Exception e) {
-        e.printStackTrace(); 
-        return; }*/
-        
+    }    
     
     private void employeemenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_employeemenuMouseClicked
         
@@ -464,61 +451,62 @@ public class EmployeePage extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel)etable.getModel();
         
         Date chosenHireDate = HireDate.getDate(); 
-        Date chosenEndDate = EndDate.getDate(); 
+        Date chosenEndDate = EndDate.getDate();
         String end = String.format("%1$tm/%1$td/%1$tY", chosenEndDate);
         String hire = String.format("%1$tm/%1$td/%1$tY", chosenHireDate);
-        
-        if(!FinalProject.verifyAlpha1(fName.getText())){
+        if(end.equals("null/null/null"))
+                end = "NA"; 
+        /*if(!verifyDates(chosenHireDate, chosenEndDate))
+            errorMsg.setText("End Date cannot be before or the same as Hire Date"); */ 
+        else if(!FinalProject.verifyAlpha1(fName.getText()))
             errorMsg.setText("Employee must have a valid First name");
-        }
-        else if(!FinalProject.verifyAlpha2(lName.getText())){
+        else if(!FinalProject.verifyAlpha2(lName.getText()))
             errorMsg.setText("Employee must hava a valid Last name");
-        }
-        else if (!FinalProject.verifySSN(ssn.getText())){
+        else if (!FinalProject.verifySSN(ssn.getText()))
             errorMsg.setText("Employee must have a valid Social Security Number, formatted XXX-XX-XXXX");
-        }
         else if(SameSsn(ssn.getText()))
             errorMsg.setText("Must use unique Social Security Number");
-        else if(!FinalProject.verifyempID(employeeID.getText())) {
+        else if(!FinalProject.verifyempID(employeeID.getText())) 
             errorMsg.setText("Employee must have a valid employee number with 8 digits, no spaces");
-        }
         else if(SameEmpId(employeeID.getText()))
             errorMsg.setText("Must use unique EmployeeID");
-        else if(!FinalProject.validatePhoneNumber(phoneNumber.getText())) {
+        else if(!FinalProject.validatePhoneNumber(phoneNumber.getText())) 
             errorMsg.setText("Employee must have a valid phone number");
-        }
         else if(!FinalProject.validateEmail(email.getText()))
             errorMsg.setText("Employee must have a valid email address"); 
-        else if(hire.equals("null/null/null"))
-                errorMsg.setText("No Hire Date was selected");
-        else if(!bmale.isSelected() && !bfemale.isSelected()){
-            errorMsg.setText("Please select either Male or Female");
+        else if(hire.equals("null/null/null")){
+            errorMsg.setText("No Hire Date was selected");
         }
+        else if(!bmale.isSelected() && !bfemale.isSelected())
+            errorMsg.setText("Please select either Male or Female");
         else{
-            
-            if(!verifyDates(chosenHireDate, chosenEndDate))
-                errorMsg.setText("End Date cannot be before Hire Date");
-            else if(end.equals("null/null/null")){
-                end = "NA";   
-           
-            FinalProject.emplist.add(employeeID.getText(),ssn.getText(), fName.getText(), lName.getText(),
+                FinalProject.emplist.add(employeeID.getText(),ssn.getText(), fName.getText(), lName.getText(),
                                 getGender(bgGender), phoneNumber.getText(), email.getText(), hire, end);
            
-            model.setRowCount(0); // clears table
-            emplist.sortEmpLname(); // resorts table to alphabetical
-            showEmp(); // shows table based on new linked list
+                model.setRowCount(0); // clears table
+                emplist.sortEmpLname(); // resorts table to alphabetical
+                showEmp(); // shows table based on new linked list
           
-            fName.setText("");
-            lName.setText("");
-            employeeID.setText("");
-            phoneNumber.setText("");
-            email.setText("");
-            ssn.setText("");
-            HireDate.setDate(null);
-            EndDate.setDate(null);
-            }
-        }
-                                             
+                fName.setText("");
+                lName.setText("");
+                employeeID.setText("");
+                phoneNumber.setText("");
+                email.setText("");
+                ssn.setText("");
+                HireDate.setDate(null);
+                EndDate.setDate(null);
+        } 
+               /* String hireDateString = ptr.getHiredate();
+                DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+                Date hireDate;
+                try{
+                    hireDate = (Date)df.parse(hireDateString);
+                }
+                catch(Exception e){
+                    e.printStackTrace();
+                    return;
+                }*/
+                                        
     }//GEN-LAST:event_addbuttonActionPerformed
     
     public void showEmp(){
