@@ -424,7 +424,7 @@ public class AssignmentPage extends javax.swing.JFrame {
                     eptr = eptr.getNext();
                 }
                 
-                
+                asnlist.sortAsnDepName();
                 PastAssignments();
                 EndDate.setDate(null);
             }    
