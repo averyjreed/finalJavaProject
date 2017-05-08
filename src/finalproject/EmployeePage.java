@@ -554,14 +554,12 @@ public class EmployeePage extends javax.swing.JFrame {
     }//GEN-LAST:event_lNameActionPerformed
 
     private void updatebuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatebuttonActionPerformed
-        //THIS IS NOT DONE. input needed is empid and end date?
-        // verify valid empid and end date is present?
         // end must be after hire
         // needs to change linked list as well, and change chnaged person to past
         
         errorMsg.setText("");
-        
         DefaultTableModel model = (DefaultTableModel)etable.getModel();
+        
         Date chosenEndDate = EndDate.getDate(); 
         String end = String.format("%1$tm/%1$td/%1$tY", chosenEndDate);
         
@@ -570,38 +568,39 @@ public class EmployeePage extends javax.swing.JFrame {
                 errorMsg.setText("Table is empty");
             else
                 errorMsg.setText("No Employee was selected");
-        }    
-        else{
-            if(end.equals("null/null/null"))
+        }   
+        else if(end.equals("null/null/null"))
                 errorMsg.setText("No End Date was chosen");
-            else{
-                
+        else{
+              
                 EmployeeNode eptr = FinalProject.emplist.getHead();
                 for(int i = 0; i < FinalProject.emplist.size(); i++){
                 
                 String hireDateString = eptr.getHireDate();
                 DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
                 Date hireDate;
-                try{
-                    hireDate = (Date)df.parse(hireDateString);
-                }
-                catch(Exception e){
-                    e.printStackTrace();
-                    return;
-                }    
-
-                if(verifyDates(hireDate, chosenEndDate))
-                    errorMsg.setText("Chosen End Date is before Hire Date");
-                else if(etable.getSelectedRow() == i)
-                    eptr.setEndDate(end);
+                    try{
+                        hireDate = (Date)df.parse(hireDateString);
+                    }
+                    catch(Exception e){
+                        e.printStackTrace();
+                        return;
+                    }   
                     
+                    if(etable.getSelectedRow() == i){
+                        if(!verifyDates(hireDate, chosenEndDate))
+                            errorMsg.setText("Chosen End Date is before Hire Date");
+                        else{
+                            eptr.setEndDate(end);
+                            model.setValueAt(end, etable.getSelectedRow(), 7);
+                            EndDate.setDate(null);
+                        }
+                    }
+                
                 eptr = eptr.getNext();
                 }
-                
-                model.setValueAt(end, etable.getSelectedRow(), 7);
-                EndDate.setDate(null);
-            }    
-        }       
+                 
+            }         
     }//GEN-LAST:event_updatebuttonActionPerformed
 
     private void currentbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_currentbuttonActionPerformed

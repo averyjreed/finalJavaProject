@@ -256,8 +256,6 @@ public class DepartmentPage extends javax.swing.JFrame {
         
         if(department.getText().trim().equals(""))
             errordep.setText("Please enter a Department Name");
-        //else if(!FinalProject.verifydepcap(department.getText()))
-            //errordep.setText("Must use all caps for Department Name");
         else if(SameDep(department.getText()))
             errordep.setText("Must use unique Department Name");
         else{
@@ -277,22 +275,22 @@ public class DepartmentPage extends javax.swing.JFrame {
         
             for (int i = 0; i < FinalProject.deplist.size(); i++) {
                 
-                String manager = new String();
                 int numemployees = 0;
-                AssignmentNode aptr = FinalProject.asnlist.getHead(); 
+                String manager = new String();
                 
+                AssignmentNode aptr = FinalProject.asnlist.getHead(); 
                 for (int j = 0; j < FinalProject.asnlist.size(); j++) { 
                    
-                    if(dptr.getDname().compareTo(aptr.getDname()) == 0)
+                    if(dptr.getDname().compareTo(aptr.getDname()) == 0){
                         numemployees++;
-                    if(aptr.getRank().equals("Manager"))
-                        manager = aptr.getfName();
-                    
+                        if(aptr.getRank().equals("Manager"))
+                            manager = aptr.getfName();
+                    }
                 aptr = aptr.getNext(); 
                 } // end of assignment for loop
                 
             Object[] originalFiles = {dptr.getDname(), manager, numemployees};
-            model.addRow(originalFiles);    
+            model.addRow(originalFiles);     
                 
             dptr = dptr.getNext(); 
             } // end of dep for loop
