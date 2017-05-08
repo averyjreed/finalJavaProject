@@ -456,9 +456,8 @@ public class EmployeePage extends javax.swing.JFrame {
         String hire = String.format("%1$tm/%1$td/%1$tY", chosenHireDate);
         if(end.equals("null/null/null"))
                 end = "NA"; 
-        /*if(!verifyDates(chosenHireDate, chosenEndDate))
-            errorMsg.setText("End Date cannot be before or the same as Hire Date"); */ 
-        else if(!FinalProject.verifyAlpha1(fName.getText()))
+       
+        if(!FinalProject.verifyAlpha1(fName.getText()))
             errorMsg.setText("Employee must have a valid First name");
         else if(!FinalProject.verifyAlpha2(lName.getText()))
             errorMsg.setText("Employee must hava a valid Last name");
@@ -477,6 +476,8 @@ public class EmployeePage extends javax.swing.JFrame {
         else if(hire.equals("null/null/null")){
             errorMsg.setText("No Hire Date was selected");
         }
+        else if(!verifyDates(chosenHireDate, chosenEndDate))
+            errorMsg.setText("End Date cannot be before the Hire Date"); 
         else if(!bmale.isSelected() && !bfemale.isSelected())
             errorMsg.setText("Please select either Male or Female");
         else{
@@ -496,17 +497,7 @@ public class EmployeePage extends javax.swing.JFrame {
                 HireDate.setDate(null);
                 EndDate.setDate(null);
         } 
-               /* String hireDateString = ptr.getHiredate();
-                DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-                Date hireDate;
-                try{
-                    hireDate = (Date)df.parse(hireDateString);
-                }
-                catch(Exception e){
-                    e.printStackTrace();
-                    return;
-                }*/
-                                        
+                                     
     }//GEN-LAST:event_addbuttonActionPerformed
     
     public void showEmp(){
@@ -522,8 +513,11 @@ public class EmployeePage extends javax.swing.JFrame {
     }
     
     private boolean verifyDates(Date hr, Date lv) {
-        if(hr.compareTo(lv) > 0 && hr.compareTo(lv) == 0) 
+        if(hr.compareTo(lv) < 0) 
             return true;
+        else if (lv == null)
+            return true;
+        
         return false;
     }
     
@@ -563,7 +557,7 @@ public class EmployeePage extends javax.swing.JFrame {
         //THIS IS NOT DONE. input needed is empid and end date?
         // verify valid empid and end date is present?
         // end must be after hire
-        // needs to change linked list as well
+        // needs to change linked list as well, and change chnaged person to past
         
         errorMsg.setText("");
         
@@ -584,11 +578,24 @@ public class EmployeePage extends javax.swing.JFrame {
                 
                 EmployeeNode eptr = FinalProject.emplist.getHead();
                 for(int i = 0; i < FinalProject.emplist.size(); i++){
+                
+                String hireDateString = eptr.getHireDate();
+                DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+                Date hireDate;
+                try{
+                    hireDate = (Date)df.parse(hireDateString);
+                }
+                catch(Exception e){
+                    e.printStackTrace();
+                    return;
+                }    
+
+                if(verifyDates(hireDate, chosenEndDate))
+                    errorMsg.setText("Chosen End Date is before Hire Date");
+                else if(etable.getSelectedRow() == i)
+                    eptr.setEndDate(end);
                     
-                    if(etable.getSelectedRow() == i)
-                        eptr.setEndDate(end);
-                    
-                    eptr = eptr.getNext();
+                eptr = eptr.getNext();
                 }
                 
                 model.setValueAt(end, etable.getSelectedRow(), 7);

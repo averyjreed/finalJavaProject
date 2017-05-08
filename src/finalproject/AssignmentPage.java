@@ -523,7 +523,9 @@ public class AssignmentPage extends javax.swing.JFrame {
     }
     
     private boolean verifyDates(Date hr, Date lv) {
-        if(hr.compareTo(lv) < 0) 
+        if(hr.compareTo(lv) > 0 && hr.compareTo(lv) == 0) 
+            return true;
+        else if (lv == null)
             return true;
         return false;
     }

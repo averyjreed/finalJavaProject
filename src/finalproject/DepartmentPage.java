@@ -275,32 +275,27 @@ public class DepartmentPage extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) dtable.getModel();
         DepartmentNode dptr = FinalProject.deplist.getHead();
         
-        //AssignmentNode aptr = FinalProject.asnlist.getHead(); 
-        //EmployeeNode eptr = FinalProject.emplist.getHead(); 
-        
-        //int numemployees = 0;
-        //String manager = new String();
-        
             for (int i = 0; i < FinalProject.deplist.size(); i++) {
                 
-                /*for (int j = 0; j < FinalProject.asnlist.size(); j++) { 
+                String manager = new String();
+                int numemployees = 0;
+                AssignmentNode aptr = FinalProject.asnlist.getHead(); 
+                
+                for (int j = 0; j < FinalProject.asnlist.size(); j++) { 
                    
                     if(dptr.getDname().compareTo(aptr.getDname()) == 0)
                         numemployees++;
                     if(aptr.getRank().equals("Manager"))
                         manager = aptr.getfName();
                     
-                */
-
-                Object[] originalFiles = {dptr.getDname(), dptr.getDname(), dptr.getDname()};
-                model.addRow(originalFiles);
+                aptr = aptr.getNext(); 
+                } // end of assignment for loop
                 
-                //aptr = aptr.getNext();
-                //}
+            Object[] originalFiles = {dptr.getDname(), manager, numemployees};
+            model.addRow(originalFiles);    
                 
-            dptr = dptr.getNext();        
-            } // end of department for loop
-            
+            dptr = dptr.getNext(); 
+            } // end of dep for loop
     }
    
     public boolean SameDep(String depname){
