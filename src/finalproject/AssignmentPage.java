@@ -297,17 +297,6 @@ public class AssignmentPage extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_homemenuMouseClicked
 
-      /* String hireDateString = eptr.getHiredate();
-    DateFormat df = new SimpleDateFormat("MM/dd/yyyy"); 
-    Date hireDate; 
-    
-    try{ 
-        hireDate = (Date)df.parse(hireDateString);} 
-    
-    catch(Exception e) {
-        e.printStackTrace(); 
-        return; } */ // converting date back to object
-    
     private void employeemenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_employeemenuMouseClicked
         EmployeePage ep = new EmployeePage();
         ep.setVisible(true);
@@ -476,14 +465,26 @@ public class AssignmentPage extends javax.swing.JFrame {
     }
     
     private void getEID(){ // needs to check for no assignment
-        EmployeeNode eptr = FinalProject.emplist.getHead();
-        
         empcb.removeAllItems();
         empcb.addItem("Select One");
         
+        EmployeeNode eptr = FinalProject.emplist.getHead();
         for(int i = 0; i < FinalProject.emplist.size(); i++){
-            empcb.addItem(eptr.getEmployeeID());
-            eptr = eptr.getNext();
+        
+            int hasOneAtLeast = 0;
+            
+            AssignmentNode aptr = FinalProject.asnlist.getHead();
+            for(int j = 0; j < FinalProject.asnlist.size(); j++){
+
+            if(aptr.getEmployeeID().equals(eptr.getEmployeeID()))
+                hasOneAtLeast++;
+            
+            aptr = aptr.getNext();
+            }
+            
+        if(hasOneAtLeast == 0)    
+            empcb.addItem(eptr.getEmployeeID());       
+        eptr = eptr.getNext();
         }
     }
     
@@ -514,6 +515,7 @@ public class AssignmentPage extends javax.swing.JFrame {
     private void CurrentAssignments(){
     DefaultTableModel model = (DefaultTableModel) atable.getModel();
     model.setRowCount(0);
+    getEID();
     
     AssignmentNode aptr = FinalProject.asnlist.getHead();
     for(int i = 0; i < FinalProject.asnlist.size(); i++){
@@ -524,6 +526,8 @@ public class AssignmentPage extends javax.swing.JFrame {
     aptr = aptr.getNext();
     
     }
+    
+    
     errormsg.setText("Current Assignments are displayed.");
     }
     
@@ -544,10 +548,11 @@ public class AssignmentPage extends javax.swing.JFrame {
     }
     
     private boolean verifyDates(Date hr, Date lv) {
-         if(hr.compareTo(lv) < 0) 
+         if(lv == null)
             return true;
-        else if (lv == null)
+        else if(hr.compareTo(lv) < 0)
             return true;
+        
         return false;
     }
     
