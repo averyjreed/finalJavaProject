@@ -139,7 +139,7 @@ public class AssignmentPage extends javax.swing.JFrame {
         rankcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select One", "Level1", "Level2", "Level3", "Level4", "Level5", "Manager" }));
 
         errormsg.setForeground(new java.awt.Color(255, 0, 0));
-        errormsg.setText("Assignments tab defaults to showing current and past assignments when opened.");
+        errormsg.setText("Assignments tab opens showing current and past assignments");
 
         homemenu.setText("Home");
         homemenu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -232,7 +232,7 @@ public class AssignmentPage extends javax.swing.JFrame {
                                     .addComponent(rankcb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(EndDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(110, 110, 110)
+                        .addGap(106, 106, 106)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(pastbutton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(asnaddbutton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -271,7 +271,7 @@ public class AssignmentPage extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(EndDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(43, 43, 43)
+                        .addGap(32, 32, 32)
                         .addComponent(asnaddbutton)
                         .addGap(18, 18, 18)
                         .addComponent(updatebutton)

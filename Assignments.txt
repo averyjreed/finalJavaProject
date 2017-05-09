@@ -1,5 +1,6 @@
 Accounting	44449999	Frable	Fan	Level4	05/09/2017	NA
 Accounting	44440222	Powell	Alfred	Manager	05/15/2017	NA
+Assurance	44441100	Endd	Dan	Manager	05/02/2017	05/04/2017
 Executive	22220000	Geee	Eeem	Manager	05/16/2017	NA
 Janitorial	44440003	Fodo	Fnana	Level4	05/09/2017	05/17/2017
 Management	22201111	Coh	Ryan	Level2	05/02/2017	05/13/2017
