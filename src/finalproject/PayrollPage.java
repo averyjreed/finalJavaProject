@@ -53,6 +53,7 @@ public class PayrollPage extends javax.swing.JFrame {
         jLabel1.setText("Reed-Bentley Construction Payroll");
         jLabel1.setPreferredSize(new java.awt.Dimension(600, 600));
 
+        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
