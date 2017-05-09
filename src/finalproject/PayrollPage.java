@@ -54,7 +54,9 @@ public class PayrollPage extends javax.swing.JFrame {
         jLabel1.setPreferredSize(new java.awt.Dimension(600, 600));
 
         jTextArea1.setEditable(false);
+        jTextArea1.setBackground(new java.awt.Color(191, 175, 107));
         jTextArea1.setColumns(20);
+        jTextArea1.setForeground(new java.awt.Color(0, 0, 0));
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
         jTextArea1.setText("HI MICHAEL!\n\n\nDidnt have time to get this page payroll running. Everything else should be working according to the lecture slides and prompt though!! Only thing we didn't fix was the \"if =\" on verify dates, but you said that's ok. \n\n\nHope you have a great summer and enjoy our construction company!!\n\n-Sincerely Avery and Matt");

@@ -145,7 +145,7 @@ public class EmployeePage extends javax.swing.JFrame {
         });
 
         errorMsg.setForeground(new java.awt.Color(255, 0, 51));
-        errorMsg.setText("Employees tab defaults to showing current and past assignments when opened.");
+        errorMsg.setText("Employees tab defaults to showing current and past employees when opened.");
         errorMsg.setSize(new java.awt.Dimension(100, 100));
 
         fName.setBackground(new java.awt.Color(191, 175, 107));

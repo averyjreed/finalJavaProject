@@ -52,7 +52,7 @@ public class HomePage extends javax.swing.JFrame {
         jTextArea1.setColumns(20);
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
-        jTextArea1.setText("  Clients - We strive to exceed client expectations \n  through the quality of our workmanship, our \n  attentive project coordination, and our clear \n  communication throughout every stage of the \n  project.\n\n  Employees - Our firm values its employees and \n  encourages them to be their very best. We offer \n  numerous training opportunities and maintain a     top safety program to ensure their well-being .\n\n  Excellence - We strive to achieve excellence in all   aspects of serving our company and clients.\n\n  Profitable Growth - Business growth provides \n  additional opportunities for our firm, allowing us    to invest resources back into the community.\n\n  Social Responsibility - We give back to the \n  community through philanthropic events,               donations, and volunteering. We are conscious of   our short and long-term impact on the                    environment.\n\n  Innovation - We encourage creative problem           solving and work to improve on our best                 practices, which leads to better quality and             efficiency.");
+        jTextArea1.setText("  Clients - We strive to exceed client expectations \n  through the quality of our workmanship, our \n  attentive project coordination, and our clear \n  communication throughout every stage of the \n  project.\n\n  Employees - Our firm values its employees and \n  encourages them to be their very best. We offer \n  numerous training opportunities and maintain a         top safety program to ensure their well-being .\n\n  Excellence - We strive to achieve excellence in all      aspects of serving our company and clients.\n\n  Profitable Growth - Business growth provides \n  additional opportunities for our firm, allowing us       to invest resources back into the community.\n\n  Social Responsibility - We give back to the \n  community through philanthropic events,                   donations, and volunteering. We are conscious of      our short and long-term impact on the                       environment.\n\n  Innovation - We encourage creative problem              solving and work to improve on our best                    practices, which leads to better quality and                efficiency.");
         jTextArea1.setWrapStyleWord(true);
         jScrollPane1.setViewportView(jTextArea1);
 
@@ -143,18 +143,18 @@ public class HomePage extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(173, 173, 173)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 179, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(19, 19, 19)
+                                .addGap(20, 20, 20)
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(12, 12, 12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -170,13 +170,15 @@ public class HomePage extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel2)))
-                        .addGap(18, 18, 18)
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 101, Short.MAX_VALUE)
+                                .addComponent(jLabel2)
+                                .addGap(26, 26, 26)))
                         .addComponent(jLabel4)
-                        .addGap(50, 50, 50))))
+                        .addGap(74, 74, 74))))
         );
 
         pack();

@@ -85,22 +85,22 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="173" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" pref="550" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="179" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel3" min="-2" pref="274" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jLabel2" min="-2" pref="260" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                               <Component id="jLabel4" min="-2" pref="315" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="jScrollPane1" min="-2" pref="338" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -121,15 +121,18 @@
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="0" pref="101" max="32767" attributes="0"/>
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -153,7 +156,7 @@
             <Property name="columns" type="int" value="20"/>
             <Property name="lineWrap" type="boolean" value="true"/>
             <Property name="rows" type="int" value="5"/>
-            <Property name="text" type="java.lang.String" value="  Clients - We strive to exceed client expectations &#xa;  through the quality of our workmanship, our &#xa;  attentive project coordination, and our clear &#xa;  communication throughout every stage of the &#xa;  project.&#xa;&#xa;  Employees - Our firm values its employees and &#xa;  encourages them to be their very best. We offer &#xa;  numerous training opportunities and maintain a     top safety program to ensure their well-being .&#xa;&#xa;  Excellence - We strive to achieve excellence in all   aspects of serving our company and clients.&#xa;&#xa;  Profitable Growth - Business growth provides &#xa;  additional opportunities for our firm, allowing us    to invest resources back into the community.&#xa;&#xa;  Social Responsibility - We give back to the &#xa;  community through philanthropic events,               donations, and volunteering. We are conscious of   our short and long-term impact on the                    environment.&#xa;&#xa;  Innovation - We encourage creative problem           solving and work to improve on our best                 practices, which leads to better quality and             efficiency."/>
+            <Property name="text" type="java.lang.String" value="  Clients - We strive to exceed client expectations &#xa;  through the quality of our workmanship, our &#xa;  attentive project coordination, and our clear &#xa;  communication throughout every stage of the &#xa;  project.&#xa;&#xa;  Employees - Our firm values its employees and &#xa;  encourages them to be their very best. We offer &#xa;  numerous training opportunities and maintain a         top safety program to ensure their well-being .&#xa;&#xa;  Excellence - We strive to achieve excellence in all      aspects of serving our company and clients.&#xa;&#xa;  Profitable Growth - Business growth provides &#xa;  additional opportunities for our firm, allowing us       to invest resources back into the community.&#xa;&#xa;  Social Responsibility - We give back to the &#xa;  community through philanthropic events,                   donations, and volunteering. We are conscious of      our short and long-term impact on the                       environment.&#xa;&#xa;  Innovation - We encourage creative problem              solving and work to improve on our best                    practices, which leads to better quality and                efficiency."/>
             <Property name="wrapStyleWord" type="boolean" value="true"/>
           </Properties>
         </Component>

@@ -139,7 +139,7 @@ public class AssignmentPage extends javax.swing.JFrame {
         rankcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select One", "Level1", "Level2", "Level3", "Level4", "Level5", "Manager" }));
 
         errormsg.setForeground(new java.awt.Color(255, 0, 0));
-        errormsg.setText("Assignments tab opens showing current and past assignments");
+        errormsg.setText("Assignments tab defaults to showing current and past assignments when opened.");
 
         homemenu.setText("Home");
         homemenu.addMouseListener(new java.awt.event.MouseAdapter() {
