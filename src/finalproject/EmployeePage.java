@@ -145,6 +145,7 @@ public class EmployeePage extends javax.swing.JFrame {
         });
 
         errorMsg.setForeground(new java.awt.Color(255, 0, 51));
+        errorMsg.setText("Employees tab defaults to showing current and past assignments when opened.");
         errorMsg.setSize(new java.awt.Dimension(100, 100));
 
         fName.setBackground(new java.awt.Color(191, 175, 107));
@@ -576,7 +577,7 @@ public class EmployeePage extends javax.swing.JFrame {
                 EmployeeNode eptr = FinalProject.emplist.getHead();
                 for(int i = 0; i < FinalProject.emplist.size(); i++){
 
-                if(etable.getSelectedRow() == i){
+                if(model.getValueAt(etable.getSelectedRow(), 0).toString().equals(eptr.getEmployeeID())){
 
                     String hireDateString = eptr.getHireDate();
                     DateFormat df = new SimpleDateFormat("MM/dd/yyyy");

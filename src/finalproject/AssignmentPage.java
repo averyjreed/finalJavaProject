@@ -26,6 +26,7 @@ public class AssignmentPage extends javax.swing.JFrame {
         initComponents();
         asnlist.sortAsnDepName();
         showAsn();
+        
         getDepText();
         getEID();
     }
@@ -138,6 +139,7 @@ public class AssignmentPage extends javax.swing.JFrame {
         rankcb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select One", "Level1", "Level2", "Level3", "Level4", "Level5", "Manager" }));
 
         errormsg.setForeground(new java.awt.Color(255, 0, 0));
+        errormsg.setText("Assignments tab defaults to showing current and past assignments when opened.");
 
         homemenu.setText("Home");
         homemenu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -368,7 +370,8 @@ public class AssignmentPage extends javax.swing.JFrame {
             errormsg.setText("Please choose a Rank");
         else if(begin.equals("null/null/null"))
             errormsg.setText("No Begin Date was selected.");     
-        // verify end date is after begin date
+        else if(!verifyDates(chosenBeginDate, chosenEndDate))
+            errormsg.setText("End Date cannot be before the Begin Date"); 
         else{
             FinalProject.asnlist.add(depcb.getSelectedItem().toString(), empcb.getSelectedItem().toString(), alname, afname, rankcb.getSelectedItem().toString(), begin, aend);
             
@@ -415,18 +418,36 @@ public class AssignmentPage extends javax.swing.JFrame {
                 errormsg.setText("No End Date was chosen");
             else{
                 
-                AssignmentNode eptr = FinalProject.asnlist.getHead();
+                AssignmentNode aptr = FinalProject.asnlist.getHead();
                 for(int i = 0; i < FinalProject.asnlist.size(); i++){
                     
-                    if(atable.getSelectedRow() == i)
-                        eptr.setEdate(end);
-                    
-                    eptr = eptr.getNext();
+                if(model.getValueAt(atable.getSelectedRow(), 1).toString().equals(aptr.getEmployeeID())){
+
+                    String beginDateString = aptr.getBdate();
+                    DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+                    Date beginDate;
+                    try{
+                        beginDate = (Date)df.parse(beginDateString);
+                    }
+                    catch(Exception e){
+                        e.printStackTrace();
+                        return;
+                    }   
+
+                    if(!verifyDates(beginDate, chosenEndDate))
+                        errormsg.setText("Chosen End Date is before Begin Date");
+                    else{
+                        aptr.setEdate(end);
+                        model.setValueAt(end, atable.getSelectedRow(), 6);
+                        EndDate.setDate(null);
+                        PastAssignments();
+                        break;
+                        }
                 }
+
+                aptr = aptr.getNext();
+                } // end of linked list for loop 
                 
-                asnlist.sortAsnDepName();
-                PastAssignments();
-                EndDate.setDate(null);
             }    
         }                 
     }//GEN-LAST:event_updatebuttonActionPerformed
