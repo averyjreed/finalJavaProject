@@ -513,9 +513,9 @@ public class EmployeePage extends javax.swing.JFrame {
     }
     
     private boolean verifyDates(Date hr, Date lv) {
-        if(hr.compareTo(lv) < 0) 
+        if(lv == null)
             return true;
-        else if (lv == null)
+        else if(hr.compareTo(lv) < 0)
             return true;
         
         return false;
@@ -554,8 +554,6 @@ public class EmployeePage extends javax.swing.JFrame {
     }//GEN-LAST:event_lNameActionPerformed
 
     private void updatebuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatebuttonActionPerformed
-        // end must be after hire
-        // needs to change linked list as well, and change chnaged person to past
         
         errorMsg.setText("");
         DefaultTableModel model = (DefaultTableModel)etable.getModel();
@@ -570,15 +568,19 @@ public class EmployeePage extends javax.swing.JFrame {
                 errorMsg.setText("No Employee was selected");
         }   
         else if(end.equals("null/null/null"))
-                errorMsg.setText("No End Date was chosen");
+            errorMsg.setText("No End Date was chosen");
         else{
-              
+            
+            if(noAsn(model.getValueAt(etable.getSelectedRow(), 0).toString())){
+                
                 EmployeeNode eptr = FinalProject.emplist.getHead();
                 for(int i = 0; i < FinalProject.emplist.size(); i++){
-                
-                String hireDateString = eptr.getHireDate();
-                DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-                Date hireDate;
+
+                if(etable.getSelectedRow() == i){
+
+                    String hireDateString = eptr.getHireDate();
+                    DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+                    Date hireDate;
                     try{
                         hireDate = (Date)df.parse(hireDateString);
                     }
@@ -586,21 +588,22 @@ public class EmployeePage extends javax.swing.JFrame {
                         e.printStackTrace();
                         return;
                     }   
-                    
-                    if(etable.getSelectedRow() == i){
-                        if(!verifyDates(hireDate, chosenEndDate))
-                            errorMsg.setText("Chosen End Date is before Hire Date");
-                        else{
-                            eptr.setEndDate(end);
-                            model.setValueAt(end, etable.getSelectedRow(), 7);
-                            EndDate.setDate(null);
+
+                    if(!verifyDates(hireDate, chosenEndDate))
+                        errorMsg.setText("Chosen End Date is before Hire Date");
+                    else{
+                        eptr.setEndDate(end);
+                        model.setValueAt(end, etable.getSelectedRow(), 7);
+                        EndDate.setDate(null);
                         }
-                    }
-                
-                eptr = eptr.getNext();
                 }
-                 
-            }         
+
+                eptr = eptr.getNext();
+                } // end of linked list for loop 
+            }
+            else
+                errorMsg.setText("To update, employee cannot have an assignment. Remove employee from her/his assignment please");
+        }          
     }//GEN-LAST:event_updatebuttonActionPerformed
 
     private void currentbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_currentbuttonActionPerformed
@@ -611,6 +614,22 @@ public class EmployeePage extends javax.swing.JFrame {
         PastEmployees();
     }//GEN-LAST:event_pastbuttonActionPerformed
 
+    public boolean noAsn(String eid){
+        
+        AssignmentNode aptr = FinalProject.asnlist.getHead();
+        for(int i = 0; i < FinalProject.asnlist.size(); i++){
+        
+            if(eid.equals(aptr.getEmployeeID())){
+                if(aptr.getEdate().equals("NA"))
+                    return false;
+
+            }
+        aptr = aptr.getNext();
+        }
+        
+        return true;
+    }
+    
     private void CurrentEmployees(){
     DefaultTableModel model = (DefaultTableModel) etable.getModel();
     

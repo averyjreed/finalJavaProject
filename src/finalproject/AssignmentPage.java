@@ -468,7 +468,7 @@ public class AssignmentPage extends javax.swing.JFrame {
     
     public String empIdTofName(String empid){
      
-    EmployeeNode eptr = FinalProject.emplist.getHead();
+        EmployeeNode eptr = FinalProject.emplist.getHead();
         for(int i = 0; i < FinalProject.emplist.size(); i++){
     
             if(empid.compareTo(eptr.getEmployeeID()) == 0)
@@ -523,7 +523,7 @@ public class AssignmentPage extends javax.swing.JFrame {
     }
     
     private boolean verifyDates(Date hr, Date lv) {
-        if(hr.compareTo(lv) > 0 && hr.compareTo(lv) == 0) 
+         if(hr.compareTo(lv) < 0) 
             return true;
         else if (lv == null)
             return true;
