@@ -282,7 +282,9 @@ public class DepartmentPage extends javax.swing.JFrame {
                 for (int j = 0; j < FinalProject.asnlist.size(); j++) { 
                    
                     if(dptr.getDname().compareTo(aptr.getDname()) == 0){
-                        numemployees++;
+                        if(aptr.getEdate().equals("NA"))
+                            numemployees++;
+                        
                         if(aptr.getRank().equals("Manager"))
                             manager = aptr.getfName();
                     }
